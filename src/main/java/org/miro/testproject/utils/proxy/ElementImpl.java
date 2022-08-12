@@ -1,6 +1,8 @@
 package org.miro.testproject.utils.proxy;
 
 import org.miro.testproject.utils.locators.Locator;
+import org.openqa.selenium.ElementClickInterceptedException;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -42,7 +44,12 @@ public class ElementImpl implements Element {
     @Override
     public void click() {
         waitToBeClickable();
-        webElement.click();
+        try {
+            webElement.click();
+        } catch (ElementClickInterceptedException e) {
+            removeCookieBanner();
+            webElement.click();
+        }
     }
 
     @Override
@@ -60,5 +67,10 @@ public class ElementImpl implements Element {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10L));
         wait.until(ExpectedConditions.visibilityOf(this.webElement));
         return this.webElement.isDisplayed();
+    }
+
+    private void removeCookieBanner() {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("return document.querySelectorAll('#onetrust-consent-sdk').forEach(function(element) {element.remove();});");
     }
 }

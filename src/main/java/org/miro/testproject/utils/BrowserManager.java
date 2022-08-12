@@ -1,6 +1,7 @@
 package org.miro.testproject.utils;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.miro.testproject.utils.common.HelperUtil;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -9,14 +10,17 @@ import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 
+import static org.miro.testproject.utils.common.HelperUtil.isNullOrEmpty;
+
 public class BrowserManager {
     private WebDriver driver;
     private final boolean isHeadless;
+    PropertiesReader reader;
 
     public BrowserManager() {
-        PropertiesReader reader = new PropertiesReader("test.config");
-        this.isHeadless = Boolean.parseBoolean(reader.getProperty("headless").getSelector());
-        createDriver(reader.getProperty("browser").getSelector());
+        reader = new PropertiesReader("test.config");
+        this.isHeadless = getHeadlessParam();
+        createDriver(getBrowserParam());
     }
 
     public WebDriver getDriver() {
@@ -25,6 +29,21 @@ public class BrowserManager {
 
     private void setDriver(WebDriver driver) {
         this.driver = driver;
+    }
+
+    private String getBrowserParam() {
+        String targetBrowser = System.getProperty("targetBrowser");
+        if (isNullOrEmpty(targetBrowser))
+            return reader.getProperty("targetBrowser").getSelector();
+        return targetBrowser;
+    }
+
+    private boolean getHeadlessParam() {
+        String headless = System.getProperty("headless");
+        if (isNullOrEmpty(headless))
+            return Boolean.parseBoolean(reader.getProperty("headless").getSelector());
+        return Boolean.parseBoolean(headless);
+
     }
 
     private void createDriver(String browser) {

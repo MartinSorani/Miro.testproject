@@ -1,4 +1,4 @@
-package org.miro.testproject.suites.signup;
+package org.miro.suites;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

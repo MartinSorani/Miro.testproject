@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class BasePage {
-    protected static final Logger log = LoggerFactory.getLogger("[Test]");
+    protected static final Logger log = LoggerFactory.getLogger("Console");
     private final PropertiesReader reader;
     protected final WebDriverWait wait;
     protected final WebDriver driver;
