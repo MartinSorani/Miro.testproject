@@ -1,13 +1,11 @@
 package org.miro.testproject.suites.signup;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import org.miro.testproject.pages.CodeVerificationPage;
-import org.miro.testproject.pages.SignUpPage;
+import org.miro.testproject.pages.*;
 import org.miro.testproject.suites.base.BaseTest;
 import org.miro.testproject.utils.users.User;
 
@@ -17,13 +15,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class SignUpTests extends BaseTest {
-
-    User user;
-
-    @BeforeEach
-    void init() {
-        user = new User().generateRandomUser();
-    }
 
     @Test
     @DisplayName("Should land in the code verification page")
@@ -97,6 +88,75 @@ public class SignUpTests extends BaseTest {
         assertEquals("Please agree with the Terms to sign up.", signUpPage.lblTermsWarning.getText());
     }
 
+    @Test
+    @DisplayName("Should bring up the terms of service page")
+    void shouldRedirectToTermsPage() {
+        TermsPage termsPage =
+                test()
+                        .clickSignUpButton()
+                        .clickTermsLink();
+
+        assertEquals("Terms of Service", termsPage.lblTitle.getText());
+    }
+
+    @Test
+    @DisplayName("Should bring up the privacy policy page")
+    void shouldRedirectToPrivacyPage() {
+        PrivacyPage privacyPage =
+                test()
+                        .clickSignUpButton()
+                        .clickPrivacyLink();
+
+        assertEquals("Privacy Policy", privacyPage.lblTitle.getText());
+    }
+
+    @Test
+    @DisplayName("Should sign up with Google account")
+    void shouldLandInGoogleAccount() {
+        GooglePage googlePage =
+                test()
+                        .clickSignUpButton()
+                        .clickGoogleSignup()
+                        .checkReviewTerms()
+                        .checkReviewSubscribe()
+                        .clickContinueToGoogle();
+
+        assertTrue(googlePage.lblBoxHeader.isVisible());
+    }
+
+    @Test
+    @DisplayName("Should trigger terms review warning")
+    void shouldTriggerTermsReviewWarning() {
+        SignUpPage signUpPage =
+                test()
+                        .clickSignUpButton()
+                        .clickGoogleSignup()
+                        .checkReviewSubscribe()
+                        .clickContinueToSignupAndExpectError();
+
+        assertTrue(signUpPage.lblTermsReviewWarning.isVisible());
+        assertEquals("Please agree with the Terms of Service and Privacy Policy", signUpPage.lblTermsReviewWarning.getText());
+    }
+
+    @Test
+    @DisplayName("Should sign up with Slack account")
+    void shouldLandInSlackAccount() {
+        SlackPage slackPage =
+                test()
+                        .clickSignUpButton()
+                        .clickSlackSignup()
+                        .checkReviewTerms()
+                        .checkReviewSubscribe()
+                        .clickContinueToSlack();
+
+        assertTrue(slackPage.lblHeader.isVisible());
+        assertEquals("Sign in to your workspace", slackPage.lblHeader.getText());
+    }
+
+    /**
+     * Provider for shouldTriggerPasswordWarning
+     * @return Stream of invalid passwords
+     */
     static Stream<String> invalidPasswords() {
         return Stream.of(
                 " ",

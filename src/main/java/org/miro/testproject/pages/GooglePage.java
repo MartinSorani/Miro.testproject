@@ -4,12 +4,12 @@ import org.miro.testproject.pages.base.BasePage;
 import org.miro.testproject.utils.proxy.Element;
 import org.openqa.selenium.WebDriver;
 
-public class PrivacyPage extends BasePage {
+public class GooglePage extends BasePage {
 
     //Elements
-    public Element lblTitle = getElement("lblTitle");
+    public Element lblBoxHeader = getElement("lblBoxHeader");
 
-    public PrivacyPage(WebDriver driver) {
+    public GooglePage(WebDriver driver) {
         super(driver);
     }
 }

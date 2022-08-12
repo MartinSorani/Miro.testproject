@@ -4,6 +4,9 @@ import org.miro.testproject.pages.base.BasePage;
 import org.miro.testproject.utils.proxy.Element;
 import org.openqa.selenium.WebDriver;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+
 public class SignUpPage extends BasePage {
 
     //Elements
@@ -15,10 +18,17 @@ public class SignUpPage extends BasePage {
     Element btnSubmit = getElement("btnSubmit");
     Element lnkTerms = getElement("lnkTerms");
     Element lnkPrivacy = getElement("lnkPrivacy");
+    Element btnGoogleSignup = getElement("btnGoogleSignup");
+    Element divReviewTerms = getElement("divReviewTerms");
+    Element chkReviewTerms = getElement("chkReviewTerms");
+    Element chkReviewSubscribe = getElement("chkReviewSubscribe");
+    Element btnContinueSignup = getElement("btnContinueSignup");
+    Element btnSlackSignup = getElement("btnSlackSignup");
 
     public Element lblEmailWarning = getElement("lblEmailWarning");
     public Element lblPasswordWarning = getElement("lblPasswordWarning");
     public Element lblTermsWarning = getElement("lblTermsWarning");
+    public Element lblTermsReviewWarning = getElement("lblTermsReviewWarning");
 
     public SignUpPage(WebDriver driver) {
         super(driver);
@@ -67,14 +77,60 @@ public class SignUpPage extends BasePage {
     }
 
     public TermsPage clickTermsLink() {
-        handleId = driver.getWindowHandle();
+        log.info("Click terms link");
         lnkTerms.click();
+        switchTabs();
         return new TermsPage(driver);
     }
 
     public PrivacyPage clickPrivacyLink() {
-        handleId = driver.getWindowHandle();
+        log.info("Click privacy link");
         lnkPrivacy.click();
+        switchTabs();
         return new PrivacyPage(driver);
+    }
+
+    public SignUpPage clickGoogleSignup() {
+        log.info("Click sign up with google button");
+        btnGoogleSignup.click();
+        waitForElementVisible(divReviewTerms);
+        return this;
+    }
+
+    public SignUpPage clickSlackSignup() {
+        log.info("Click sign up with slack button");
+        btnSlackSignup.click();
+        waitForElementVisible(divReviewTerms);
+        return this;
+    }
+
+    public SignUpPage checkReviewTerms() {
+        log.info("Check terms of service checkbox");
+        chkReviewTerms.click();
+        return this;
+    }
+
+    public SignUpPage checkReviewSubscribe() {
+        log.info("Check receive news checkbox");
+        chkReviewSubscribe.click();
+        return this;
+    }
+
+    public GooglePage clickContinueToGoogle() {
+        log.info("Click continue to sign up button");
+        btnContinueSignup.click();
+        return new GooglePage(driver);
+    }
+
+    public SlackPage clickContinueToSlack() {
+        log.info("Click continue to sign up button");
+        btnContinueSignup.click();
+        return new SlackPage(driver);
+    }
+
+    public SignUpPage clickContinueToSignupAndExpectError() {
+        log.info("Click continue to sign up button");
+        btnContinueSignup.click();
+        return this;
     }
 }

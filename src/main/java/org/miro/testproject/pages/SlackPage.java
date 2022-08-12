@@ -4,12 +4,12 @@ import org.miro.testproject.pages.base.BasePage;
 import org.miro.testproject.utils.proxy.Element;
 import org.openqa.selenium.WebDriver;
 
-public class PrivacyPage extends BasePage {
+public class SlackPage extends BasePage {
 
     //Elements
-    public Element lblTitle = getElement("lblTitle");
+    public Element lblHeader = getElement("lblHeader");
 
-    public PrivacyPage(WebDriver driver) {
+    public SlackPage(WebDriver driver) {
         super(driver);
     }
 }

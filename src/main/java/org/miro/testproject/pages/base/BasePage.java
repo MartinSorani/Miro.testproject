@@ -11,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.time.Duration;
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -38,7 +39,22 @@ public class BasePage {
         wait.until(ExpectedConditions.visibilityOf(getElement(elementName).toWebElement()));
     }
 
+    protected void waitForElementVisible(Element element) {
+        wait.until(ExpectedConditions.visibilityOf(element.toWebElement()));
+    }
+
     private void assertUrlIsCorrect() {
         assertTrue(driver.getCurrentUrl().contains(reader.getProperty("url").getSelector()));
+    }
+
+    protected void switchTabs() {
+        ArrayList<String> currentTabs = new ArrayList<>(driver.getWindowHandles());
+        if (currentTabs.size() > 1) {
+            handleId = currentTabs.get(0);
+            driver.switchTo().window(currentTabs.get(1));
+        } else {
+            log.warn("Warning: only one tab is active.");
+            handleId = currentTabs.get(0);
+        }
     }
 }
