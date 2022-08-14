@@ -1,6 +1,6 @@
-package org.miro.testproject.pages.utils.common;
+package org.miro.testproject.utils.common;
 
-import org.miro.testproject.pages.utils.properties.PropertiesReader;
+import org.miro.testproject.utils.properties.PropertiesReader;
 
 public class HelperUtil {
 

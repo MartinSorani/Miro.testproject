@@ -17,7 +17,7 @@ public class ElementImpl implements Element {
     public ElementImpl(Driver driver, Locator locator) {
         this.locator = locator;
         this.webDriver = driver.getWebDriver();
-        wait = new WebDriverWait(webDriver, Duration.ofSeconds(2L));
+        wait = new WebDriverWait(webDriver, Duration.ofSeconds(3L));
     }
 
     private WebElement webElement() {

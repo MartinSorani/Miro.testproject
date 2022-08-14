@@ -1,4 +1,4 @@
-package org.miro.testproject.pages.utils.users;
+package org.miro.testproject.utils.users;
 
 import org.apache.commons.lang3.RandomStringUtils;
 

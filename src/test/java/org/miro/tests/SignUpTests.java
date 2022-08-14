@@ -1,20 +1,16 @@
 package org.miro.tests;
 
-import org.apache.commons.codec.language.bm.Lang;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.miro.testproject.pages.*;
-import org.miro.testproject.pages.utils.common.HelperUtil;
-import org.miro.testproject.pages.utils.locales.Language;
 import org.miro.testproject.tests.base.BaseTest;
-import org.miro.testproject.pages.utils.users.User;
+import org.miro.testproject.utils.common.HelperUtil;
+import org.miro.testproject.utils.locales.Language;
+import org.miro.testproject.utils.users.User;
 
-import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
-import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -58,7 +54,7 @@ public class SignUpTests extends BaseTest {
     }
 
     @ParameterizedTest
-    @MethodSource("invalidPasswords")
+    @ValueSource(strings = {" ", "4", "abc", "sjh456r"})
     @DisplayName("Should trigger a password validation error")
     void shouldTriggerPasswordWarning(String password) {
         user = new User()
@@ -164,9 +160,11 @@ public class SignUpTests extends BaseTest {
 
         SignUpPage signUpPage =
                 test()
-                .clickSignUpButton();
+                        .clickSignUpButton();
         for (Language lang : Language.values()) {
             signUpPage.selectLanguage(lang);
+
+            log.info("Asserting header text matches expected language: " + lang.label);
             assertEquals(new String(getExpectedTitle(lang).getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8),
                     signUpPage.lblHeaderTitle.getText());
         }
@@ -174,22 +172,10 @@ public class SignUpTests extends BaseTest {
 
     /**
      * Reader for expected title in shouldChangeLocale
+     *
      * @return Expected header title in specified language
      */
     static String getExpectedTitle(Language language) {
         return HelperUtil.retrievePropertyFromFile(language.code, "ExpectedTitle");
-    }
-
-    /**
-     * Provider for shouldTriggerPasswordWarning
-     * @return Stream of invalid passwords
-     */
-    static Stream<String> invalidPasswords() {
-        return Stream.of(
-                " ",
-                "4",
-                "abc",
-                "sjh456r"
-        );
     }
 }

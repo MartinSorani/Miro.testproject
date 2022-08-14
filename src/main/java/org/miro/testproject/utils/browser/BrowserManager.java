@@ -1,4 +1,4 @@
-package org.miro.testproject.pages.utils.browser;
+package org.miro.testproject.utils.browser;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.miro.testproject.proxy.driver.Driver;
@@ -10,8 +10,8 @@ import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 
-import static org.miro.testproject.pages.utils.common.HelperUtil.isNullOrEmpty;
-import static org.miro.testproject.pages.utils.common.HelperUtil.retrievePropertyFromFile;
+import static org.miro.testproject.utils.common.HelperUtil.isNullOrEmpty;
+import static org.miro.testproject.utils.common.HelperUtil.retrievePropertyFromFile;
 
 public class BrowserManager {
     private Driver driver;

@@ -1,4 +1,4 @@
-package org.miro.testproject.pages.utils.locales;
+package org.miro.testproject.utils.locales;
 
 import java.util.ArrayList;
 import java.util.List;

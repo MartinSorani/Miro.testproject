@@ -1,12 +1,11 @@
 package org.miro.testproject.pages;
 
 import org.miro.testproject.pages.base.BasePage;
-import org.miro.testproject.pages.utils.locales.Language;
+import org.miro.testproject.utils.locales.Language;
 import org.miro.testproject.proxy.driver.Driver;
 import org.miro.testproject.proxy.element.Element;
 import org.miro.testproject.proxy.locators.Locator;
 import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebDriver;
 
 public class SignUpPage extends BasePage {
 
@@ -139,21 +138,29 @@ public class SignUpPage extends BasePage {
     }
 
     public SignUpPage selectLanguage(Language language) {
-        log.info("Selecting language " + language.toString());
+        log.info("Selecting language " + language.label);
         btnSelectLanguage.click();
+        log.info("Wait for language menu to be visible");
         divLanguageBox.waitUntilVisible();
         Element targetOption = driver.createElement(new Locator()
                 .setSelector("a[data-locale=" + language.code + "] div div")
                 .setBy("css"));
+        log.info(language.label + " option found. Clicking option");
         targetOption.click();
-        try {
-            divLanguageBox.waitUntilInvisible();
-        } catch (TimeoutException e) {
-            log.warn("Language box didn't go away! Clicking again.");
-            targetOption.click();
+        if (!driver.getBrowser().equals("Firefox")) {
+            try {
+                log.info("Wait for language box to disappear");
+                divLanguageBox.waitUntilInvisible();
+            } catch (TimeoutException e) {
+                log.warn("Language box didn't go away! Clicking again.");
+                targetOption.click();
+            }
         }
-        if (!language.equals(Language.ENGLISH))
+        if (!language.equals(Language.ENGLISH)) {
+            log.info("Wait for url to contain " + language.code);
             driver.waitUrlContains(language.code, 2L);
+        }
+        log.info("Wait for the submit button to be visible");
         btnSubmit.waitUntilVisible();
         return this;
     }

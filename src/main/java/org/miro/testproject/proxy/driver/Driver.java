@@ -24,4 +24,6 @@ public interface Driver {
     void close();
 
     void waitUrlContains(String expected, long duration);
+
+    String getBrowser();
 }

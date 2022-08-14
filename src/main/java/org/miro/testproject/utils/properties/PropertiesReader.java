@@ -1,4 +1,4 @@
-package org.miro.testproject.pages.utils.properties;
+package org.miro.testproject.utils.properties;
 
 import org.miro.testproject.proxy.locators.Locator;
 import org.slf4j.Logger;

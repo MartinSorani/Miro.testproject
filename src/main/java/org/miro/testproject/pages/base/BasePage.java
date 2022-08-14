@@ -1,6 +1,6 @@
 package org.miro.testproject.pages.base;
 
-import org.miro.testproject.pages.utils.properties.PropertiesReader;
+import org.miro.testproject.utils.properties.PropertiesReader;
 import org.miro.testproject.proxy.driver.Driver;
 import org.miro.testproject.proxy.locators.Locator;
 import org.miro.testproject.proxy.element.Element;
@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class BasePage {
-    protected static final Logger log = LoggerFactory.getLogger("[TEST]");
+    protected static final Logger log = LoggerFactory.getLogger("[ACTION]");
     private final PropertiesReader reader;
     protected final WebDriverWait wait;
     protected final Driver driver;
