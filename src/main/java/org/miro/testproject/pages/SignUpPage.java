@@ -42,6 +42,7 @@ public class SignUpPage extends BasePage {
     public Element lblTermsWarning = getElement("lblTermsWarning");
     public Element lblTermsReviewWarning = getElement("lblTermsReviewWarning");
     public Element lblHeaderTitle = getElement("lblHeaderTitle");
+    public Element lblNameWarning = getElement("lblNameWarning");
     //endregion
 
     public SignUpPage(Driver driver) {

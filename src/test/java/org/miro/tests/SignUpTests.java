@@ -13,8 +13,7 @@ import org.miro.testproject.utils.users.User;
 
 import java.nio.charset.StandardCharsets;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class SignUpTests extends BaseTest {
 
@@ -34,6 +33,27 @@ public class SignUpTests extends BaseTest {
 
         assertTrue(codeVerificationPage.txtCode.isVisible());
         assertTrue(codeVerificationPage.lblConfirmation.getText().contains(user.getEmail()));
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {" ", "435", "abc", "#&%$("})
+    @DisplayName("Should not trigger name validation warning")
+    void shouldValidateName(String username) {
+        user = new User()
+                .setUsername(username)
+                .setRandomEmail("testemail.com")
+                .setRandomPassword();
+
+        log.info("Should not trigger name validation warning");
+        SignUpPage signUpPage =
+                test()
+                        .clickSignUpButton()
+                        .enterUsername(user.getUsername())
+                        .enterEmail(user.getEmail())
+                        .enterPassword(user.getPassword());
+
+        log.info("Asserting name warning is not displayed");
+        assertEquals("", signUpPage.lblNameWarning.getText());
     }
 
     @ParameterizedTest
