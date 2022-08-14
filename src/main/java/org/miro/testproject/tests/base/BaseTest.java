@@ -1,12 +1,12 @@
-package org.miro.testproject.suites.base;
+package org.miro.testproject.tests.base;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.miro.testproject.pages.MainPage;
-import org.miro.testproject.utils.BrowserManager;
-import org.miro.testproject.utils.PropertiesReader;
-import org.miro.testproject.utils.users.User;
-import org.openqa.selenium.WebDriver;
+import org.miro.testproject.pages.utils.browser.BrowserManager;
+import org.miro.testproject.pages.utils.properties.PropertiesReader;
+import org.miro.testproject.pages.utils.users.User;
+import org.miro.testproject.proxy.driver.Driver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,8 +16,8 @@ public class BaseTest {
     protected User user;
 
     private static final PropertiesReader reader = new PropertiesReader("test.config");
-    private static final String baseUrl = reader.getProperty("baseUrl").getSelector();
-    private static WebDriver driver;
+    private static final String baseUrl = reader.getProperty("baseUrl");
+    private static Driver driver;
 
     @BeforeEach
     void init() {
@@ -29,12 +29,11 @@ public class BaseTest {
     @AfterEach
     void tearDown() {
         log.info("Test complete");
-        driver.close();
         driver.quit();
     }
 
     protected MainPage test() {
-        driver.get(baseUrl);
+        driver.goToUrl(baseUrl);
         return new MainPage(driver);
     }
 }

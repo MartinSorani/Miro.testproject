@@ -1,15 +1,15 @@
 package org.miro.testproject.pages;
 
 import org.miro.testproject.pages.base.BasePage;
-import org.miro.testproject.utils.proxy.Element;
-import org.openqa.selenium.WebDriver;
+import org.miro.testproject.proxy.driver.Driver;
+import org.miro.testproject.proxy.element.Element;
 
 public class TermsPage extends BasePage {
 
     //Elements
     public Element lblTitle = getElement("lblTitle");
 
-    public TermsPage(WebDriver driver) {
+    public TermsPage(Driver driver) {
         super(driver);
     }
 

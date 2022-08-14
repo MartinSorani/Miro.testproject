@@ -1,4 +1,6 @@
-package org.miro.testproject.utils.common;
+package org.miro.testproject.pages.utils.common;
+
+import org.miro.testproject.pages.utils.properties.PropertiesReader;
 
 public class HelperUtil {
 
@@ -13,5 +15,9 @@ public class HelperUtil {
         } catch (NullPointerException e) {
             return true;
         }
+    }
+
+    public static String retrievePropertyFromFile(String property, String file) {
+        return new PropertiesReader(file).getProperty(property);
     }
 }

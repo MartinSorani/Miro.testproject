@@ -1,8 +1,8 @@
 package org.miro.testproject.pages;
 
 import org.miro.testproject.pages.base.BasePage;
-import org.miro.testproject.utils.proxy.Element;
-import org.openqa.selenium.WebDriver;
+import org.miro.testproject.proxy.driver.Driver;
+import org.miro.testproject.proxy.element.Element;
 
 public class CodeVerificationPage extends BasePage {
 
@@ -10,7 +10,7 @@ public class CodeVerificationPage extends BasePage {
     public Element txtCode = getElement("txtCode");
     public Element lblConfirmation = getElement("lblConfirmation");
 
-    public CodeVerificationPage(WebDriver driver) {
+    public CodeVerificationPage(Driver driver) {
         super(driver);
     }
 }

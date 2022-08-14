@@ -1,8 +1,8 @@
-package org.miro.testproject.utils;
+package org.miro.testproject.pages.utils.browser;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.miro.testproject.utils.common.HelperUtil;
-import org.openqa.selenium.WebDriver;
+import org.miro.testproject.proxy.driver.Driver;
+import org.miro.testproject.proxy.driver.DriverImpl;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -10,38 +10,38 @@ import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 
-import static org.miro.testproject.utils.common.HelperUtil.isNullOrEmpty;
+import static org.miro.testproject.pages.utils.common.HelperUtil.isNullOrEmpty;
+import static org.miro.testproject.pages.utils.common.HelperUtil.retrievePropertyFromFile;
 
 public class BrowserManager {
-    private WebDriver driver;
+    private Driver driver;
     private final boolean isHeadless;
-    PropertiesReader reader;
+    String configFile = "test.config";
 
     public BrowserManager() {
-        reader = new PropertiesReader("test.config");
         this.isHeadless = getHeadlessParam();
         createDriver(getBrowserParam());
     }
 
-    public WebDriver getDriver() {
+    public Driver getDriver() {
         return this.driver;
     }
 
-    private void setDriver(WebDriver driver) {
+    private void setDriver(Driver driver) {
         this.driver = driver;
     }
 
     private String getBrowserParam() {
-        String targetBrowser = System.getProperty("targetBrowser");
+        String targetBrowser = System.getProperty("browser");
         if (isNullOrEmpty(targetBrowser))
-            return reader.getProperty("targetBrowser").getSelector();
+            return retrievePropertyFromFile("browser", configFile);
         return targetBrowser;
     }
 
     private boolean getHeadlessParam() {
         String headless = System.getProperty("headless");
         if (isNullOrEmpty(headless))
-            return Boolean.parseBoolean(reader.getProperty("headless").getSelector());
+            return Boolean.parseBoolean(retrievePropertyFromFile("headless", configFile));
         return Boolean.parseBoolean(headless);
 
     }
@@ -55,19 +55,19 @@ public class BrowserManager {
                     chromeOptions.addArguments("--headless");
                     chromeOptions.addArguments("--disable-gpu");
                 }
-                setDriver(new ChromeDriver(chromeOptions));
+                setDriver(new DriverImpl(new ChromeDriver(chromeOptions)));
                 break;
             case "Firefox":
                 WebDriverManager.firefoxdriver().setup();
                 FirefoxOptions firefoxOptions = new FirefoxOptions();
                 firefoxOptions.setHeadless(isHeadless);
-                setDriver(new FirefoxDriver(firefoxOptions));
+                setDriver(new DriverImpl(new FirefoxDriver(firefoxOptions)));
                 break;
             case "Edge":
                 WebDriverManager.edgedriver().setup();
                 EdgeOptions edgeOptions = new EdgeOptions();
                 edgeOptions.setHeadless(isHeadless);
-                setDriver(new EdgeDriver(edgeOptions));
+                setDriver(new DriverImpl(new EdgeDriver(edgeOptions)));
                 break;
             default:
                 throw new IllegalStateException("Browser not selected! Add target browser in test.config.properties");

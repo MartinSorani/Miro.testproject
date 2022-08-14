@@ -1,14 +1,12 @@
-package org.miro.testproject.utils.proxy;
+package org.miro.testproject.proxy.element;
 
-import org.miro.testproject.utils.locators.Locator;
+import org.miro.testproject.proxy.locators.Locator;
 import org.openqa.selenium.WebElement;
 
 public interface Element {
     Locator getLocator();
 
     void click();
-
-    Element findElement();
 
     WebElement toWebElement();
 
@@ -17,4 +15,8 @@ public interface Element {
     String getText();
 
     boolean isVisible();
+
+    void waitUntilVisible();
+
+    void waitUntilInvisible();
 }

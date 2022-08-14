@@ -1,11 +1,12 @@
 package org.miro.testproject.pages;
 
 import org.miro.testproject.pages.base.BasePage;
-import org.miro.testproject.utils.proxy.Element;
+import org.miro.testproject.pages.utils.locales.Language;
+import org.miro.testproject.proxy.driver.Driver;
+import org.miro.testproject.proxy.element.Element;
+import org.miro.testproject.proxy.locators.Locator;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
-
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 
 public class SignUpPage extends BasePage {
 
@@ -24,13 +25,16 @@ public class SignUpPage extends BasePage {
     Element chkReviewSubscribe = getElement("chkReviewSubscribe");
     Element btnContinueSignup = getElement("btnContinueSignup");
     Element btnSlackSignup = getElement("btnSlackSignup");
+    Element btnSelectLanguage = getElement("btnSelectLanguage");
+    Element divLanguageBox = getElement("divLanguageBox");
 
     public Element lblEmailWarning = getElement("lblEmailWarning");
     public Element lblPasswordWarning = getElement("lblPasswordWarning");
     public Element lblTermsWarning = getElement("lblTermsWarning");
     public Element lblTermsReviewWarning = getElement("lblTermsReviewWarning");
+    public Element lblHeaderTitle = getElement("lblHeaderTitle");
 
-    public SignUpPage(WebDriver driver) {
+    public SignUpPage(Driver driver) {
         super(driver);
     }
 
@@ -93,14 +97,14 @@ public class SignUpPage extends BasePage {
     public SignUpPage clickGoogleSignup() {
         log.info("Click sign up with google button");
         btnGoogleSignup.click();
-        waitForElementVisible(divReviewTerms);
+        divReviewTerms.waitUntilVisible();
         return this;
     }
 
     public SignUpPage clickSlackSignup() {
         log.info("Click sign up with slack button");
         btnSlackSignup.click();
-        waitForElementVisible(divReviewTerms);
+        divReviewTerms.waitUntilVisible();
         return this;
     }
 
@@ -131,6 +135,26 @@ public class SignUpPage extends BasePage {
     public SignUpPage clickContinueToSignupAndExpectError() {
         log.info("Click continue to sign up button");
         btnContinueSignup.click();
+        return this;
+    }
+
+    public SignUpPage selectLanguage(Language language) {
+        log.info("Selecting language " + language.toString());
+        btnSelectLanguage.click();
+        divLanguageBox.waitUntilVisible();
+        Element targetOption = driver.createElement(new Locator()
+                .setSelector("a[data-locale=" + language.code + "] div div")
+                .setBy("css"));
+        targetOption.click();
+        try {
+            divLanguageBox.waitUntilInvisible();
+        } catch (TimeoutException e) {
+            log.warn("Language box didn't go away! Clicking again.");
+            targetOption.click();
+        }
+        if (!language.equals(Language.ENGLISH))
+            driver.waitUrlContains(language.code, 2L);
+        btnSubmit.waitUntilVisible();
         return this;
     }
 }

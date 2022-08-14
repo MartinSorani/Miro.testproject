@@ -1,14 +1,19 @@
-package org.miro.suites;
+package org.miro.tests;
 
+import org.apache.commons.codec.language.bm.Lang;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.miro.testproject.pages.*;
-import org.miro.testproject.suites.base.BaseTest;
-import org.miro.testproject.utils.users.User;
+import org.miro.testproject.pages.utils.common.HelperUtil;
+import org.miro.testproject.pages.utils.locales.Language;
+import org.miro.testproject.tests.base.BaseTest;
+import org.miro.testproject.pages.utils.users.User;
 
+import java.nio.ByteBuffer;
+import java.nio.charset.StandardCharsets;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -151,6 +156,28 @@ public class SignUpTests extends BaseTest {
 
         assertTrue(slackPage.lblHeader.isVisible());
         assertEquals("Sign in to your workspace", slackPage.lblHeader.getText());
+    }
+
+    @Test
+    @DisplayName("Should display the title in several languages")
+    void shouldChangeLocale() {
+
+        SignUpPage signUpPage =
+                test()
+                .clickSignUpButton();
+        for (Language lang : Language.values()) {
+            signUpPage.selectLanguage(lang);
+            assertEquals(new String(getExpectedTitle(lang).getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8),
+                    signUpPage.lblHeaderTitle.getText());
+        }
+    }
+
+    /**
+     * Reader for expected title in shouldChangeLocale
+     * @return Expected header title in specified language
+     */
+    static String getExpectedTitle(Language language) {
+        return HelperUtil.retrievePropertyFromFile(language.code, "ExpectedTitle");
     }
 
     /**

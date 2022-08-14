@@ -1,4 +1,4 @@
-package org.miro.testproject.utils.locators;
+package org.miro.testproject.proxy.locators;
 
 import org.openqa.selenium.By;
 
@@ -31,6 +31,9 @@ public class Locator {
                 break;
             case "xpath":
                 this.by = By.xpath(getSelector());
+                break;
+            case "class":
+                this.by = By.className(getSelector());
                 break;
             default:
                 this.by = By.name(getSelector());
