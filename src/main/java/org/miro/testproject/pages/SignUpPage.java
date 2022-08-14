@@ -9,29 +9,40 @@ import org.openqa.selenium.TimeoutException;
 
 public class SignUpPage extends BasePage {
 
-    //Elements
+    //region Elements
     Element txtUsername = getElement("txtUsername");
     Element txtEmail = getElement("txtEmail");
     Element txtPassword = getElement("txtPassword");
+
     Element chkSignupTerms = getElement("chkSignupTerms");
     Element chkSignupSubscribe = getElement("chkSignupSubscribe");
-    Element btnSubmit = getElement("btnSubmit");
-    Element lnkTerms = getElement("lnkTerms");
-    Element lnkPrivacy = getElement("lnkPrivacy");
-    Element btnGoogleSignup = getElement("btnGoogleSignup");
-    Element divReviewTerms = getElement("divReviewTerms");
     Element chkReviewTerms = getElement("chkReviewTerms");
     Element chkReviewSubscribe = getElement("chkReviewSubscribe");
-    Element btnContinueSignup = getElement("btnContinueSignup");
-    Element btnSlackSignup = getElement("btnSlackSignup");
-    Element btnSelectLanguage = getElement("btnSelectLanguage");
-    Element divLanguageBox = getElement("divLanguageBox");
 
+    Element btnSubmit = getElement("btnSubmit");
+    Element btnContinueSignup = getElement("btnContinueSignup");
+    Element btnSelectLanguage = getElement("btnSelectLanguage");
+    Element btnGoogleSignup = getElement("btnGoogleSignup");
+    Element btnSlackSignup = getElement("btnSlackSignup");
+    Element btnMicrosoftSignup = getElement("btnMicrosoftSignup");
+    Element btnAppleSignup = getElement("btnAppleSignup");
+    Element btnFacebookSignup = getElement("btnFacebookSignup");
+    Element btnSignIn = getElement("btnSignIn");
+
+    Element lnkTerms = getElement("lnkTerms");
+    Element lnkPrivacy = getElement("lnkPrivacy");
+
+    Element divReviewTerms = getElement("divReviewTerms");
+    Element divLanguageBox = getElement("divLanguageBox");
+    //endregion
+
+    //region Validation
     public Element lblEmailWarning = getElement("lblEmailWarning");
     public Element lblPasswordWarning = getElement("lblPasswordWarning");
     public Element lblTermsWarning = getElement("lblTermsWarning");
     public Element lblTermsReviewWarning = getElement("lblTermsReviewWarning");
     public Element lblHeaderTitle = getElement("lblHeaderTitle");
+    //endregion
 
     public SignUpPage(Driver driver) {
         super(driver);
@@ -94,15 +105,36 @@ public class SignUpPage extends BasePage {
     }
 
     public SignUpPage clickGoogleSignup() {
-        log.info("Click sign up with google button");
+        log.info("Click sign up with Google button");
         btnGoogleSignup.click();
         divReviewTerms.waitUntilVisible();
         return this;
     }
 
     public SignUpPage clickSlackSignup() {
-        log.info("Click sign up with slack button");
+        log.info("Click sign up with Slack button");
         btnSlackSignup.click();
+        divReviewTerms.waitUntilVisible();
+        return this;
+    }
+
+    public SignUpPage clickMicrosoftSignup() {
+        log.info("Click sign up with Microsoft button");
+        btnMicrosoftSignup.click();
+        divReviewTerms.waitUntilVisible();
+        return this;
+    }
+
+    public SignUpPage clickAppleSignup() {
+        log.info("Click sign up with Apple button");
+        btnAppleSignup.click();
+        divReviewTerms.waitUntilVisible();
+        return this;
+    }
+
+    public SignUpPage clickFacebookSignup() {
+        log.info("Click sign up with Facebook button");
+        btnFacebookSignup.click();
         divReviewTerms.waitUntilVisible();
         return this;
     }
@@ -129,6 +161,24 @@ public class SignUpPage extends BasePage {
         log.info("Click continue to sign up button");
         btnContinueSignup.click();
         return new SlackPage(driver);
+    }
+
+    public MicrosoftPage clickContinueToMicrosoft() {
+        log.info("Click continue to sign up button");
+        btnContinueSignup.click();
+        return new MicrosoftPage(driver);
+    }
+
+    public ApplePage clickContinueToApple() {
+        log.info("Click continue to sign up button");
+        btnContinueSignup.click();
+        return new ApplePage(driver);
+    }
+
+    public FacebookPage clickContinueToFacebook() {
+        log.info("Click continue to sign up button");
+        btnContinueSignup.click();
+        return new FacebookPage(driver);
     }
 
     public SignUpPage clickContinueToSignupAndExpectError() {
@@ -163,5 +213,11 @@ public class SignUpPage extends BasePage {
         log.info("Wait for the submit button to be visible");
         btnSubmit.waitUntilVisible();
         return this;
+    }
+
+    public SignInPage clickSignInButton() {
+        log.info("Click Sign in button");
+        btnSignIn.click();
+        return new SignInPage(driver);
     }
 }

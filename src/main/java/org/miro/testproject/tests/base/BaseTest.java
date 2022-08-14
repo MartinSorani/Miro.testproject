@@ -21,7 +21,7 @@ public class BaseTest {
 
     @BeforeEach
     void init() {
-        log.info("Start test case");
+        log.info("Starting test case");
         driver = new BrowserManager().getDriver();
         user = new User().generateRandomUser();
     }

@@ -1,9 +1,10 @@
 package org.miro.testproject.pages.base;
 
-import org.miro.testproject.utils.properties.PropertiesReader;
 import org.miro.testproject.proxy.driver.Driver;
-import org.miro.testproject.proxy.locators.Locator;
 import org.miro.testproject.proxy.element.Element;
+import org.miro.testproject.proxy.locators.Locator;
+import org.miro.testproject.utils.properties.PropertiesReader;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;

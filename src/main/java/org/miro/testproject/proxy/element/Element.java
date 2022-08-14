@@ -19,4 +19,6 @@ public interface Element {
     void waitUntilVisible();
 
     void waitUntilInvisible();
+
+    String getAttribute(String attribute);
 }

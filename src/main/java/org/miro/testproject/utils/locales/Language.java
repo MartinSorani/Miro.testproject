@@ -1,5 +1,7 @@
 package org.miro.testproject.utils.locales;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -31,6 +33,6 @@ public enum Language {
 
     @Override
     public String toString() {
-        return this.name().toLowerCase(Locale.ROOT);
+        return StringUtils.capitalize(this.name().toLowerCase());
     }
 }

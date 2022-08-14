@@ -70,11 +70,21 @@ public class ElementImpl implements Element {
 
     @Override
     public boolean isVisible() {
+        try {
+            waitUntilVisible();
+        } catch (TimeoutException e) {
+            //do nothing
+        }
         return webElement().isDisplayed();
     }
 
     private void removeCookieBanner() {
         JavascriptExecutor js = (JavascriptExecutor) webDriver;
         js.executeScript("return document.querySelectorAll('#onetrust-consent-sdk').forEach(function(element) {element.remove();});");
+    }
+
+    @Override
+    public String getAttribute(String attribute) {
+        return webElement().getAttribute(attribute);
     }
 }
