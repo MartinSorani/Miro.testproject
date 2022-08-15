@@ -2,25 +2,25 @@
 <br />
 <p align="center">
   <a href="https://gitlab.com/MartinSorani/miro.testproject">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="images/logo.png" alt="Logo" width="200" height="62">
   </a>
 
   <h3 align="center">Miro Test Project</h3>
 
   <p align="center">
-    Short assignment for Miro sign up flow
+    Short test suite for Miro sign up flow
   </p>
-</p>
 
 
 
 ## Table of Contents
 
-* [Requirements](#about-the-project)
+* [Assignment requirements](#requirements-for-this-assignment)
   * [Built With](#built-with)
-* [Getting Started](#getting-started)
-  * [Prerequisites](#prerequisites)
+* [Prerequisites](#prerequisites)
+  * [Running tests](#running-tests)
 * [Configuration](#configuration)
+* [Output](#output)
 * [Test suite documentation](#test-suite-documentation)
 * [Contact](#contact)
 
@@ -45,13 +45,37 @@ publicly. Please host your code within Gitlab and share with qa.review@miro.com.
 
 ### Built With
 
-* [https://maven.apache.org](Apache Maven)
-* [https://junit.org/junit5/](JUnit 5)
-* [https://www.java.com/en/](Java)
-* [https://www.selenium.dev/](Selenium)
+* [Apache Maven](https://maven.apache.org)
+* [Junit 5](https://junit.org/junit5/)
+* [Java](https://www.java.com/en/)
+* [Selenium](https://www.selenium.dev/)
 
+### Prerequisites
 
-## Getting Started
+This project requires Java 8+ and Apache Maven to run.
+Download and install java for your OS from [https://www.java.com/en/](https://www.java.com/en/).
+Verify your Java installation by running the command
+
+`java -version`
+~~~
+java version "1.8.0_181"
+Java(TM) SE Runtime Environment (build 1.8.0_181-b13)
+Java HotSpot(TM) 64-Bit Server VM (build 25.181-b13, mixed mode)
+~~~
+
+Download Maven from [https://maven.apache.org](https://maven.apache.org) and follow the instructions for installation.
+Verify your Maven installation by running
+
+`mvn -v`
+~~~
+Apache Maven 3.8.5 (3599d3414f046de2324203b78ddcf9b5e4388aa0)
+Maven home: E:\Program Files\apache-maven-3.8.5
+Java version: 1.8.0_181, vendor: Oracle Corporation, runtime: E:\Program Files\Java\jdk1.8.0_181\jre
+Default locale: en_US, platform encoding: Cp1252
+OS name: "windows 10", version: "10.0", arch: "amd64", family: "windows"
+~~~
+
+## Running tests
 
 To get a local copy up and running follow these steps:
 
@@ -65,51 +89,24 @@ mvn clean test
 ```
 
 
-### Prerequisites
-
-This project requires Java 8+ and Apache Maven to run.
-Download and install java for your OS from [https://www.java.com/en/](this link).
-Verify your Java installation by running the command
-
-`java -version`
-~~~
-λ java -version
-java version "1.8.0_181"
-Java(TM) SE Runtime Environment (build 1.8.0_181-b13)
-Java HotSpot(TM) 64-Bit Server VM (build 25.181-b13, mixed mode)
-~~~
-
-Download Maven from [https://maven.apache.org](this link) and follow the instructions for installation.
-Verify your Maven installation by running
-
-`mvn -v`
-~~~
-λ mvn -v
-Apache Maven 3.8.5 (3599d3414f046de2324203b78ddcf9b5e4388aa0)
-Maven home: E:\Program Files\apache-maven-3.8.5
-Java version: 1.8.0_181, vendor: Oracle Corporation, runtime: E:\Program Files\Java\jdk1.8.0_181\jre
-Default locale: en_US, platform encoding: Cp1252
-OS name: "windows 10", version: "10.0", arch: "amd64", family: "windows"
-~~~
-
 ## Configuration
 
 This project uses Selenium Webdriver to emulate and automate interaction with different web browsers.
 The supported browsers for this project are:
-- Firefox
-- Edge
-- Chrome
+- **Firefox**
+- **Edge**
+- **Chrome**
 
 In order to specify the browser to emulate we can:
 
-1. Add the parameter `browser` to the Maven command:
+a. Add the parameter `Dbrowser` to the Maven command:
 
 ```sh
 mvn clean test -Dbrowser=Firefox
 ```
-or
+**or**
 
-2. Configure the desired option in the file `src/main/resources/test.config.properties`
+b. Configure the desired option in the file [`src/main/resources/test.config.properties`](src/main/resources/test.config.properties)
 
 ~~~
 browser = Edge
@@ -117,22 +114,28 @@ browser = Edge
 
 In the same manner, we can specify if our browser instance is to run headless:
 
-1. Add the parameter `headless` to the Maven command:
+a. Add the parameter `Dheadless` to the Maven command:
 
 ```sh
 mvn clean test -Dheadless=true
 ```
-or
+**or**
 
-2. Configure the desired option in the file `src/main/resources/test.config.properties`
+b. Configure the desired option in the file [`src/main/resources/test.config.properties`](src/main/resources/test.config.properties)
 
 ~~~
 headless = true
 ~~~
 
+## Output
+
+After all tests have run, an output log file will be generated with the name `MiroTests.log`. You can use this file to debug each step of the test cases.
+
+If a test results in a failure, a screenshot of the browser's state will be saved in the `/screenshots/` folder with the time of the failure as the file name.
+
 ## Test suite documentation
 
-Access this test suite documentation in [https://app.qase.io/project/MTP?view=1&suite=4](Qase) or access the reader friendly version at [TestCases.html](./documents/TestCases.html)
+Access this test suite documentation in [Qase](https://app.qase.io/project/MTP?view=1&suite=4) or access the reader friendly version at [TestCases.html](./documents/TestCases.html)
 
 
 ## Contact
