@@ -135,7 +135,7 @@ If a test results in a failure, a screenshot of the browser's state will be save
 
 ## Test suite documentation
 
-Access this test suite documentation in [Qase](https://app.qase.io/project/MTP?view=1&suite=4) or access the reader friendly version at [TestCases.html](./documents/TestCases.html)
+Access this test suite documentation in [Qase](https://app.qase.io/project/MTP?view=1&suite=4) or download the html version at [TestCases.html](./documents/TestCases.html)
 
 
 ## Contact
