@@ -1,0 +1,1472 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <style type="text/css">
+        html {
+            font-size: 16px;
+            font-family: "Open Sans", Helvetica, sans-serif;
+        }
+        body {
+            padding: 50px;
+            max-width: 700px;
+            width: 700px;
+        }
+        .page {
+            overflow: hidden;
+            page-break-after: always;
+            margin-bottom: 250px;
+        }
+        h1 {
+            margin-top: 0.25rem;
+            font-size: 1.5rem;
+        }
+        .row {
+            width: 100%;
+        }
+        .col-3 {
+            width: 25%;
+            float:left;
+        }
+        .col-4 {
+            width: 33.33%;
+            float:left;
+        }
+        .col-12 {
+            width: 100%;
+            float: left;
+        }
+        .param {
+            font-size: 0.875rem;
+            font-weight: normal;
+            word-break: break-word;
+        }
+
+        .color-blocker, .color-critical, .color-major, .color-high {
+            color: #D0021B;
+        }
+
+        .conditions-header {
+            font-size: 0.875rem;
+            font-weight: bold;
+            padding-bottom: 0.25rem;
+        }
+
+        .conditions-data {
+            font-weight: normal;
+            font-size: 0.875rem;
+        }
+
+        .clearfix::after {
+            display: block;
+            content: "";
+            clear: both;
+        }
+        .data-row {
+            margin-top: 1rem;
+        }
+
+        .table-steps table {
+            table-layout: fixed;
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .table-steps table td, .table-steps table th {
+            border: 1px solid;
+            padding: 5px 8px;
+        }
+
+        .table-steps img {
+            max-height: 500px;
+        }
+
+        .table-steps {
+            width: 100%;
+        }
+        .table-steps td {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #dedede;
+        }
+        .table-steps th {
+            font-size: 0.875rem; text-align: left;
+        }
+        .table-steps p {
+            margin-bottom: 0;
+        }
+        .steps ol, .steps ul {
+            margin-bottom: 0;
+            padding-left: 1.125rem;
+        }
+        .steps li {
+            font-size: 0.875rem;
+        }
+
+        .step-position span {
+            padding: .25rem 0.75rem;
+            display: block;
+            margin-right: .75rem;
+            border-radius: .25rem;
+            color: #636363;
+            background: #f3f3f3;
+        }
+
+        .step-action p {
+            display: none;
+        }
+
+        .step-content p.data {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .description {
+            font-size: 0.875rem !important;
+            margin-top: 0 !important;
+        }
+        .description p{
+            font-size: 0.875rem !important;
+            margin-top: 0 !important;
+        }
+
+        .table-steps img,
+        .description img,
+        .markdown img,
+        .steps img {
+            max-width: 100%;
+        }
+
+        .attachments {vertical-align: top;}
+        .attachments .attachment{width:96px;display:inline-block; margin-right: 8px; vertical-align: top}
+        .attachments .attachment-image{width:96px;height:96px;border-radius:6px;background-size:cover !important;}
+        .attachments .attachment-file{width:96px;height:96px;background:#e9e9e9;border-radius:6px;}
+        .attachments .attachment-file .attachment-extension{display:inline-block; text-decoration:none !important;font-weight:500;color:#000; padding-left: 8px; padding-top: 8px; font-size: 0.75rem;}
+        .attachments .attachment .attachment-filename{width:96px;display:block; text-overflow:ellipsis;white-space:nowrap;margin-top:0.5rem;overflow:hidden;text-decoration:none;color:#656565;font-size:0.625rem;}
+        .attachments .attachment a {text-decoration:none !important;border-bottom: 0;}
+    </style>
+    <link rel="stylesheet" href="https://app.qase.io/assets/main/css/fontawesome.min.css?1660392685">
+</head>
+<body>
+                                <div class="page">
+    <div>
+        <span style="font-size: 0.75rem; font-weight: 400; color: #686868">
+            MTP-11
+                    </span>
+        <h1 style="margin-bottom: 0.25rem;"> Sign up flow</h1>
+        <div class="description"><pre><code>Should land in the code verification page</code></pre></div>
+        <div class="row">
+                            <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Severity</h3>
+                    <span class="param"><i
+                                class="fas fa-genderless color-normal"></i> Normal</span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Priority</h3>
+                    <span class="param"><i
+                                class="fas fa-minus color-medium"></i> Not set</span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Behavior</h3>
+                    <span class="param">Positive</span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Type</h3>
+                    <span class="param">Functional</span>
+                </div>
+                                                <div class="col-3">
+                        <h3 style="font-size: 0.875rem;">Layer</h3>
+                        <span class="param">E2E</span>
+                    </div>
+                                                    <div class="col-3">
+                        <h3 style="font-size: 0.875rem;">Is Flaky</h3>
+                        <span class="param">No</span>
+                    </div>
+                                            <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Milestone</h3>
+                    <span class="param">
+                                                    -
+                                                </span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Automation</h3>
+                    <span class="param">
+                                                    Automated
+                                                </span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Status</h3>
+                    <span class="param">
+                                                    Actual
+                                                </span>
+                </div>
+                            <div class="clearfix" style="padding-bottom: 0.75rem;"></div>
+                            <div class="clearfix"></div>
+                <div class="row" style="padding-top: 1rem;">
+                                                        </div>
+                        <div class="clearfix"></div>
+            <div style="padding-top: 1rem;">
+                                    <div class="data-row">
+                        <div class="conditions-header">Pre-conditions</div>
+                        <div class="conditions-data markdown"><p>Valid user credentials</p></div>
+                    </div>
+                                                    <div class="data-row">
+                        <div class="conditions-header">Post-conditions</div>
+                        <div class="conditions-data markdown"><p>New user account</p></div>
+                    </div>
+                            </div>
+            <div class="clearfix"></div>
+                        <div class="clearfix"></div>
+                            <div class="case-steps" style="padding-top: 1rem;">
+                                            <h3 style="font-size:1rem; ">Scenario</h3>
+                                                    <div class="case-steps-case mt-4">
+                                <div class="steps">
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">Given</span> user navigates to sign up page https://miro.com/signup/
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">And</span> user fills out name field with valid name
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">And</span> user fills out email field with valid email
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">And</span> user fills out password field with valid password
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">And</span> user checks the terms and privacy checkbox
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">When</span> user clicks "Get started now" button
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">Then</span> user is redirected to the code validation page
+</div>
+                                                                    </div>
+                            </div>
+                                                            </div>
+                    </div>
+    </div>
+</div>
+                    <div class="page">
+    <div>
+        <span style="font-size: 0.75rem; font-weight: 400; color: #686868">
+            MTP-12
+                    </span>
+        <h1 style="margin-bottom: 0.25rem;"> Username field validation</h1>
+        <div class="description"><pre><code>Should not trigger name validation warning</code></pre></div>
+        <div class="row">
+                            <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Severity</h3>
+                    <span class="param"><i
+                                class="fas fa-genderless color-normal"></i> Normal</span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Priority</h3>
+                    <span class="param"><i
+                                class="fas fa-genderless color-medium"></i> Medium</span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Behavior</h3>
+                    <span class="param">Positive</span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Type</h3>
+                    <span class="param">Functional</span>
+                </div>
+                                                <div class="col-3">
+                        <h3 style="font-size: 0.875rem;">Layer</h3>
+                        <span class="param">E2E</span>
+                    </div>
+                                                    <div class="col-3">
+                        <h3 style="font-size: 0.875rem;">Is Flaky</h3>
+                        <span class="param">No</span>
+                    </div>
+                                            <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Milestone</h3>
+                    <span class="param">
+                                                    -
+                                                </span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Automation</h3>
+                    <span class="param">
+                                                    Automated
+                                                </span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Status</h3>
+                    <span class="param">
+                                                    Actual
+                                                </span>
+                </div>
+                            <div class="clearfix" style="padding-bottom: 0.75rem;"></div>
+                            <div class="clearfix"></div>
+                <div class="row" style="padding-top: 1rem;">
+                                                        </div>
+                        <div class="clearfix"></div>
+            <div style="padding-top: 1rem;">
+                                            </div>
+            <div class="clearfix"></div>
+                        <div class="clearfix"></div>
+                            <div class="case-steps" style="padding-top: 1rem;">
+                                            <h3 style="font-size:1rem; ">Scenario</h3>
+                                                    <div class="case-steps-case mt-4">
+                                <div class="steps">
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">Given</span> User goes to the sign up page
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">When</span> User enters username value in the username field
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">And</span> User enters valid email value in the email field
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">And</span> User enters valid password value in the password field
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">Then</span> Username warning should not be triggered
+</div>
+                                                                    </div>
+                            </div>
+                                                            </div>
+                    </div>
+    </div>
+</div>
+                    <div class="page">
+    <div>
+        <span style="font-size: 0.75rem; font-weight: 400; color: #686868">
+            MTP-13
+                    </span>
+        <h1 style="margin-bottom: 0.25rem;"> Email field validation</h1>
+        <div class="description"></div>
+        <div class="row">
+                            <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Severity</h3>
+                    <span class="param"><i
+                                class="fas fa-genderless color-normal"></i> Normal</span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Priority</h3>
+                    <span class="param"><i
+                                class="fas fa-genderless color-medium"></i> Medium</span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Behavior</h3>
+                    <span class="param">Negative</span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Type</h3>
+                    <span class="param">Functional</span>
+                </div>
+                                                <div class="col-3">
+                        <h3 style="font-size: 0.875rem;">Layer</h3>
+                        <span class="param">E2E</span>
+                    </div>
+                                                    <div class="col-3">
+                        <h3 style="font-size: 0.875rem;">Is Flaky</h3>
+                        <span class="param">No</span>
+                    </div>
+                                            <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Milestone</h3>
+                    <span class="param">
+                                                    -
+                                                </span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Automation</h3>
+                    <span class="param">
+                                                    Automated
+                                                </span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Status</h3>
+                    <span class="param">
+                                                    Actual
+                                                </span>
+                </div>
+                            <div class="clearfix" style="padding-bottom: 0.75rem;"></div>
+                            <div class="clearfix"></div>
+                <div class="row" style="padding-top: 1rem;">
+                                                        </div>
+                        <div class="clearfix"></div>
+            <div style="padding-top: 1rem;">
+                                            </div>
+            <div class="clearfix"></div>
+                        <div class="clearfix"></div>
+                            <div class="case-steps" style="padding-top: 1rem;">
+                                            <h3 style="font-size:1rem; ">Scenario</h3>
+                                                    <div class="case-steps-case mt-4">
+                                <div class="steps">
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">Given</span> User goes to the sign up page
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">When</span> User enters valid username value in username field
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">And</span> User enters email parameter in email field
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">And</span> User enters valid password value in password field
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">Then</span> Email warning validation is displayed
+</div>
+                                                                    </div>
+                            </div>
+                                                            </div>
+                    </div>
+    </div>
+</div>
+                    <div class="page">
+    <div>
+        <span style="font-size: 0.75rem; font-weight: 400; color: #686868">
+            MTP-14
+                    </span>
+        <h1 style="margin-bottom: 0.25rem;"> Password field validation</h1>
+        <div class="description"></div>
+        <div class="row">
+                            <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Severity</h3>
+                    <span class="param"><i
+                                class="fas fa-genderless color-normal"></i> Normal</span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Priority</h3>
+                    <span class="param"><i
+                                class="fas fa-genderless color-medium"></i> Medium</span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Behavior</h3>
+                    <span class="param">Negative</span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Type</h3>
+                    <span class="param">Functional</span>
+                </div>
+                                                <div class="col-3">
+                        <h3 style="font-size: 0.875rem;">Layer</h3>
+                        <span class="param">E2E</span>
+                    </div>
+                                                    <div class="col-3">
+                        <h3 style="font-size: 0.875rem;">Is Flaky</h3>
+                        <span class="param">No</span>
+                    </div>
+                                            <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Milestone</h3>
+                    <span class="param">
+                                                    -
+                                                </span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Automation</h3>
+                    <span class="param">
+                                                    Automated
+                                                </span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Status</h3>
+                    <span class="param">
+                                                    Actual
+                                                </span>
+                </div>
+                            <div class="clearfix" style="padding-bottom: 0.75rem;"></div>
+                            <div class="clearfix"></div>
+                <div class="row" style="padding-top: 1rem;">
+                                                        </div>
+                        <div class="clearfix"></div>
+            <div style="padding-top: 1rem;">
+                                            </div>
+            <div class="clearfix"></div>
+                        <div class="clearfix"></div>
+                            <div class="case-steps" style="padding-top: 1rem;">
+                                            <h3 style="font-size:1rem; ">Scenario</h3>
+                                                    <div class="case-steps-case mt-4">
+                                <div class="steps">
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">Given</span> User goes to the sign up page
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">When</span> User enters valid username value in username field
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">And</span> User enters valid email value in email field
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">And</span> User enters password parameter in password field
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">Then</span> Password validation warning is displayed
+</div>
+                                                                    </div>
+                            </div>
+                                                            </div>
+                    </div>
+    </div>
+</div>
+                    <div class="page">
+    <div>
+        <span style="font-size: 0.75rem; font-weight: 400; color: #686868">
+            MTP-15
+                    </span>
+        <h1 style="margin-bottom: 0.25rem;"> Terms checkbox validation</h1>
+        <div class="description"></div>
+        <div class="row">
+                            <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Severity</h3>
+                    <span class="param"><i
+                                class="fas fa-genderless color-normal"></i> Normal</span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Priority</h3>
+                    <span class="param"><i
+                                class="fas fa-genderless color-medium"></i> Medium</span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Behavior</h3>
+                    <span class="param">Not set</span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Type</h3>
+                    <span class="param">Functional</span>
+                </div>
+                                                <div class="col-3">
+                        <h3 style="font-size: 0.875rem;">Layer</h3>
+                        <span class="param">E2E</span>
+                    </div>
+                                                    <div class="col-3">
+                        <h3 style="font-size: 0.875rem;">Is Flaky</h3>
+                        <span class="param">No</span>
+                    </div>
+                                            <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Milestone</h3>
+                    <span class="param">
+                                                    -
+                                                </span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Automation</h3>
+                    <span class="param">
+                                                    Automated
+                                                </span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Status</h3>
+                    <span class="param">
+                                                    Actual
+                                                </span>
+                </div>
+                            <div class="clearfix" style="padding-bottom: 0.75rem;"></div>
+                            <div class="clearfix"></div>
+                <div class="row" style="padding-top: 1rem;">
+                                                        </div>
+                        <div class="clearfix"></div>
+            <div style="padding-top: 1rem;">
+                                            </div>
+            <div class="clearfix"></div>
+                        <div class="clearfix"></div>
+                            <div class="case-steps" style="padding-top: 1rem;">
+                                            <h3 style="font-size:1rem; ">Scenario</h3>
+                                                    <div class="case-steps-case mt-4">
+                                <div class="steps">
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">Given</span> User goes to the sign up page
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">When</span> User enters valid username in username field
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">And</span> User enters valid email in email field
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">And</span> User enters valid password in password field
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">And</span> User checks subscription checkbox
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">And</span> User clicks sign up button
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">Then</span> Terms checkbox warning is displayed
+</div>
+                                                                    </div>
+                            </div>
+                                                            </div>
+                    </div>
+    </div>
+</div>
+                    <div class="page">
+    <div>
+        <span style="font-size: 0.75rem; font-weight: 400; color: #686868">
+            MTP-16
+                    </span>
+        <h1 style="margin-bottom: 0.25rem;"> Terms link validation</h1>
+        <div class="description"></div>
+        <div class="row">
+                            <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Severity</h3>
+                    <span class="param"><i
+                                class="fas fa-genderless color-normal"></i> Normal</span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Priority</h3>
+                    <span class="param"><i
+                                class="fas fa-genderless color-medium"></i> Medium</span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Behavior</h3>
+                    <span class="param">Positive</span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Type</h3>
+                    <span class="param">Functional</span>
+                </div>
+                                                <div class="col-3">
+                        <h3 style="font-size: 0.875rem;">Layer</h3>
+                        <span class="param">E2E</span>
+                    </div>
+                                                    <div class="col-3">
+                        <h3 style="font-size: 0.875rem;">Is Flaky</h3>
+                        <span class="param">No</span>
+                    </div>
+                                            <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Milestone</h3>
+                    <span class="param">
+                                                    -
+                                                </span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Automation</h3>
+                    <span class="param">
+                                                    Automated
+                                                </span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Status</h3>
+                    <span class="param">
+                                                    Actual
+                                                </span>
+                </div>
+                            <div class="clearfix" style="padding-bottom: 0.75rem;"></div>
+                            <div class="clearfix"></div>
+                <div class="row" style="padding-top: 1rem;">
+                                                        </div>
+                        <div class="clearfix"></div>
+            <div style="padding-top: 1rem;">
+                                            </div>
+            <div class="clearfix"></div>
+                        <div class="clearfix"></div>
+                            <div class="case-steps" style="padding-top: 1rem;">
+                                            <h3 style="font-size:1rem; ">Scenario</h3>
+                                                    <div class="case-steps-case mt-4">
+                                <div class="steps">
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">Given</span> User goes to sign up page
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">When</span> User clicks the terms link
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">Then</span> User is redirected to the terms page
+</div>
+                                                                    </div>
+                            </div>
+                                                            </div>
+                    </div>
+    </div>
+</div>
+                    <div class="page">
+    <div>
+        <span style="font-size: 0.75rem; font-weight: 400; color: #686868">
+            MTP-17
+                    </span>
+        <h1 style="margin-bottom: 0.25rem;"> Privacy link validation</h1>
+        <div class="description"></div>
+        <div class="row">
+                            <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Severity</h3>
+                    <span class="param"><i
+                                class="fas fa-genderless color-normal"></i> Normal</span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Priority</h3>
+                    <span class="param"><i
+                                class="fas fa-genderless color-medium"></i> Medium</span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Behavior</h3>
+                    <span class="param">Positive</span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Type</h3>
+                    <span class="param">Functional</span>
+                </div>
+                                                <div class="col-3">
+                        <h3 style="font-size: 0.875rem;">Layer</h3>
+                        <span class="param">E2E</span>
+                    </div>
+                                                    <div class="col-3">
+                        <h3 style="font-size: 0.875rem;">Is Flaky</h3>
+                        <span class="param">No</span>
+                    </div>
+                                            <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Milestone</h3>
+                    <span class="param">
+                                                    -
+                                                </span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Automation</h3>
+                    <span class="param">
+                                                    Automated
+                                                </span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Status</h3>
+                    <span class="param">
+                                                    Actual
+                                                </span>
+                </div>
+                            <div class="clearfix" style="padding-bottom: 0.75rem;"></div>
+                            <div class="clearfix"></div>
+                <div class="row" style="padding-top: 1rem;">
+                                                        </div>
+                        <div class="clearfix"></div>
+            <div style="padding-top: 1rem;">
+                                            </div>
+            <div class="clearfix"></div>
+                        <div class="clearfix"></div>
+                            <div class="case-steps" style="padding-top: 1rem;">
+                                            <h3 style="font-size:1rem; ">Scenario</h3>
+                                                    <div class="case-steps-case mt-4">
+                                <div class="steps">
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">Given</span> User goes to the sign up page
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">When</span> User clicks the terms policy link
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">Then</span> User is redirected to the terms policy page
+</div>
+                                                                    </div>
+                            </div>
+                                                            </div>
+                    </div>
+    </div>
+</div>
+                    <div class="page">
+    <div>
+        <span style="font-size: 0.75rem; font-weight: 400; color: #686868">
+            MTP-18
+                    </span>
+        <h1 style="margin-bottom: 0.25rem;"> Third party terms checkbox validation</h1>
+        <div class="description"></div>
+        <div class="row">
+                            <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Severity</h3>
+                    <span class="param"><i
+                                class="fas fa-genderless color-normal"></i> Normal</span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Priority</h3>
+                    <span class="param"><i
+                                class="fas fa-minus color-medium"></i> Not set</span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Behavior</h3>
+                    <span class="param">Not set</span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Type</h3>
+                    <span class="param">Other</span>
+                </div>
+                                                <div class="col-3">
+                        <h3 style="font-size: 0.875rem;">Layer</h3>
+                        <span class="param">Not set</span>
+                    </div>
+                                                    <div class="col-3">
+                        <h3 style="font-size: 0.875rem;">Is Flaky</h3>
+                        <span class="param">No</span>
+                    </div>
+                                            <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Milestone</h3>
+                    <span class="param">
+                                                    -
+                                                </span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Automation</h3>
+                    <span class="param">
+                                                    Automated
+                                                </span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Status</h3>
+                    <span class="param">
+                                                    Actual
+                                                </span>
+                </div>
+                            <div class="clearfix" style="padding-bottom: 0.75rem;"></div>
+                            <div class="clearfix"></div>
+                <div class="row" style="padding-top: 1rem;">
+                                                        </div>
+                        <div class="clearfix"></div>
+            <div style="padding-top: 1rem;">
+                                            </div>
+            <div class="clearfix"></div>
+                        <div class="clearfix"></div>
+                            <div class="case-steps" style="padding-top: 1rem;">
+                                            <h3 style="font-size:1rem; ">Scenario</h3>
+                                                    <div class="case-steps-case mt-4">
+                                <div class="steps">
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">Given</span> User goes to the sign up page
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">When</span> User signs up with third party service
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">Then</span> Terms and subscription confirmation dialog box pops up
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">When</span> User checks subscription checkbox
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">And</span> User clicks continue to sign up button
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">Then</span> Terms review warning is displayed
+</div>
+                                                                    </div>
+                            </div>
+                                                            </div>
+                    </div>
+    </div>
+</div>
+                    <div class="page">
+    <div>
+        <span style="font-size: 0.75rem; font-weight: 400; color: #686868">
+            MTP-19
+                    </span>
+        <h1 style="margin-bottom: 0.25rem;"> Sign up with Google account</h1>
+        <div class="description"></div>
+        <div class="row">
+                            <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Severity</h3>
+                    <span class="param"><i
+                                class="fas fa-genderless color-normal"></i> Normal</span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Priority</h3>
+                    <span class="param"><i
+                                class="fas fa-genderless color-medium"></i> Medium</span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Behavior</h3>
+                    <span class="param">Positive</span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Type</h3>
+                    <span class="param">Functional</span>
+                </div>
+                                                <div class="col-3">
+                        <h3 style="font-size: 0.875rem;">Layer</h3>
+                        <span class="param">E2E</span>
+                    </div>
+                                                    <div class="col-3">
+                        <h3 style="font-size: 0.875rem;">Is Flaky</h3>
+                        <span class="param">No</span>
+                    </div>
+                                            <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Milestone</h3>
+                    <span class="param">
+                                                    -
+                                                </span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Automation</h3>
+                    <span class="param">
+                                                    Automated
+                                                </span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Status</h3>
+                    <span class="param">
+                                                    Actual
+                                                </span>
+                </div>
+                            <div class="clearfix" style="padding-bottom: 0.75rem;"></div>
+                            <div class="clearfix"></div>
+                <div class="row" style="padding-top: 1rem;">
+                                                        </div>
+                        <div class="clearfix"></div>
+            <div style="padding-top: 1rem;">
+                                            </div>
+            <div class="clearfix"></div>
+                        <div class="clearfix"></div>
+                            <div class="case-steps" style="padding-top: 1rem;">
+                                            <h3 style="font-size:1rem; ">Scenario</h3>
+                                                    <div class="case-steps-case mt-4">
+                                <div class="steps">
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">Given</span> User goes to sign up page
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">When</span> User clicks sign up with Google button
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">Then</span> Terms and subscription confirmation dialog pops up
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">When</span> User checks terms checkbox
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">And</span> User checks subscription checkbox
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">When</span> User clicks continue to sign up button
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">Then</span> User is redirected to Google account sign up page
+</div>
+                                                                    </div>
+                            </div>
+                                                            </div>
+                    </div>
+    </div>
+</div>
+                    <div class="page">
+    <div>
+        <span style="font-size: 0.75rem; font-weight: 400; color: #686868">
+            MTP-20
+                    </span>
+        <h1 style="margin-bottom: 0.25rem;"> Sign up with Slack account</h1>
+        <div class="description"></div>
+        <div class="row">
+                            <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Severity</h3>
+                    <span class="param"><i
+                                class="fas fa-genderless color-normal"></i> Normal</span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Priority</h3>
+                    <span class="param"><i
+                                class="fas fa-genderless color-medium"></i> Medium</span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Behavior</h3>
+                    <span class="param">Positive</span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Type</h3>
+                    <span class="param">Functional</span>
+                </div>
+                                                <div class="col-3">
+                        <h3 style="font-size: 0.875rem;">Layer</h3>
+                        <span class="param">E2E</span>
+                    </div>
+                                                    <div class="col-3">
+                        <h3 style="font-size: 0.875rem;">Is Flaky</h3>
+                        <span class="param">No</span>
+                    </div>
+                                            <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Milestone</h3>
+                    <span class="param">
+                                                    -
+                                                </span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Automation</h3>
+                    <span class="param">
+                                                    Automated
+                                                </span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Status</h3>
+                    <span class="param">
+                                                    Actual
+                                                </span>
+                </div>
+                            <div class="clearfix" style="padding-bottom: 0.75rem;"></div>
+                            <div class="clearfix"></div>
+                <div class="row" style="padding-top: 1rem;">
+                                                        </div>
+                        <div class="clearfix"></div>
+            <div style="padding-top: 1rem;">
+                                            </div>
+            <div class="clearfix"></div>
+                        <div class="clearfix"></div>
+                            <div class="case-steps" style="padding-top: 1rem;">
+                                            <h3 style="font-size:1rem; ">Scenario</h3>
+                                                    <div class="case-steps-case mt-4">
+                                <div class="steps">
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">Given</span> User goes to sign up page
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">When</span> User clicks sign up with Slack button
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">Then</span> Terms and subscription confirmation dialog pops up
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">When</span> User checks terms checkbox
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">And</span> User checks subscription checkbox
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">When</span> User clicks continue to sign up button
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">Then</span> User is redirected to Slack account sign up page
+</div>
+                                                                    </div>
+                            </div>
+                                                            </div>
+                    </div>
+    </div>
+</div>
+                    <div class="page">
+    <div>
+        <span style="font-size: 0.75rem; font-weight: 400; color: #686868">
+            MTP-21
+                    </span>
+        <h1 style="margin-bottom: 0.25rem;"> Sign up with Microsoft account</h1>
+        <div class="description"></div>
+        <div class="row">
+                            <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Severity</h3>
+                    <span class="param"><i
+                                class="fas fa-genderless color-normal"></i> Normal</span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Priority</h3>
+                    <span class="param"><i
+                                class="fas fa-genderless color-medium"></i> Medium</span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Behavior</h3>
+                    <span class="param">Positive</span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Type</h3>
+                    <span class="param">Functional</span>
+                </div>
+                                                <div class="col-3">
+                        <h3 style="font-size: 0.875rem;">Layer</h3>
+                        <span class="param">E2E</span>
+                    </div>
+                                                    <div class="col-3">
+                        <h3 style="font-size: 0.875rem;">Is Flaky</h3>
+                        <span class="param">No</span>
+                    </div>
+                                            <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Milestone</h3>
+                    <span class="param">
+                                                    -
+                                                </span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Automation</h3>
+                    <span class="param">
+                                                    Automated
+                                                </span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Status</h3>
+                    <span class="param">
+                                                    Actual
+                                                </span>
+                </div>
+                            <div class="clearfix" style="padding-bottom: 0.75rem;"></div>
+                            <div class="clearfix"></div>
+                <div class="row" style="padding-top: 1rem;">
+                                                        </div>
+                        <div class="clearfix"></div>
+            <div style="padding-top: 1rem;">
+                                            </div>
+            <div class="clearfix"></div>
+                        <div class="clearfix"></div>
+                            <div class="case-steps" style="padding-top: 1rem;">
+                                            <h3 style="font-size:1rem; ">Scenario</h3>
+                                                    <div class="case-steps-case mt-4">
+                                <div class="steps">
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">Given</span> User goes to sign up page
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">When</span> User clicks sign up with Office 365 button
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">Then</span> Terms and subscription confirmation dialog pops up
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">When</span> User checks terms checkbox
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">And</span> User checks subscription checkbox
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">When</span> User clicks continue to sign up button
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">Then</span> User is redirected to Microsoft account sign up page
+</div>
+                                                                    </div>
+                            </div>
+                                                            </div>
+                    </div>
+    </div>
+</div>
+                    <div class="page">
+    <div>
+        <span style="font-size: 0.75rem; font-weight: 400; color: #686868">
+            MTP-22
+                    </span>
+        <h1 style="margin-bottom: 0.25rem;"> Sign up with Apple ID</h1>
+        <div class="description"></div>
+        <div class="row">
+                            <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Severity</h3>
+                    <span class="param"><i
+                                class="fas fa-genderless color-normal"></i> Normal</span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Priority</h3>
+                    <span class="param"><i
+                                class="fas fa-genderless color-medium"></i> Medium</span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Behavior</h3>
+                    <span class="param">Positive</span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Type</h3>
+                    <span class="param">Functional</span>
+                </div>
+                                                <div class="col-3">
+                        <h3 style="font-size: 0.875rem;">Layer</h3>
+                        <span class="param">E2E</span>
+                    </div>
+                                                    <div class="col-3">
+                        <h3 style="font-size: 0.875rem;">Is Flaky</h3>
+                        <span class="param">No</span>
+                    </div>
+                                            <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Milestone</h3>
+                    <span class="param">
+                                                    -
+                                                </span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Automation</h3>
+                    <span class="param">
+                                                    Automated
+                                                </span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Status</h3>
+                    <span class="param">
+                                                    Actual
+                                                </span>
+                </div>
+                            <div class="clearfix" style="padding-bottom: 0.75rem;"></div>
+                            <div class="clearfix"></div>
+                <div class="row" style="padding-top: 1rem;">
+                                                        </div>
+                        <div class="clearfix"></div>
+            <div style="padding-top: 1rem;">
+                                            </div>
+            <div class="clearfix"></div>
+                        <div class="clearfix"></div>
+                            <div class="case-steps" style="padding-top: 1rem;">
+                                            <h3 style="font-size:1rem; ">Scenario</h3>
+                                                    <div class="case-steps-case mt-4">
+                                <div class="steps">
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">Given</span> User goes to sign up page
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">When</span> User clicks sign up with Apple ID button
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">Then</span> Terms and subscription confirmation dialog pops up
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">When</span> User checks terms checkbox
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">And</span> User checks subscription checkbox
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">When</span> User clicks continue to sign up button
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">Then</span> User is redirected to Apple ID page
+</div>
+                                                                    </div>
+                            </div>
+                                                            </div>
+                    </div>
+    </div>
+</div>
+                    <div class="page">
+    <div>
+        <span style="font-size: 0.75rem; font-weight: 400; color: #686868">
+            MTP-23
+                    </span>
+        <h1 style="margin-bottom: 0.25rem;"> Sign up with Facebook account</h1>
+        <div class="description"></div>
+        <div class="row">
+                            <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Severity</h3>
+                    <span class="param"><i
+                                class="fas fa-genderless color-normal"></i> Normal</span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Priority</h3>
+                    <span class="param"><i
+                                class="fas fa-genderless color-medium"></i> Medium</span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Behavior</h3>
+                    <span class="param">Positive</span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Type</h3>
+                    <span class="param">Functional</span>
+                </div>
+                                                <div class="col-3">
+                        <h3 style="font-size: 0.875rem;">Layer</h3>
+                        <span class="param">E2E</span>
+                    </div>
+                                                    <div class="col-3">
+                        <h3 style="font-size: 0.875rem;">Is Flaky</h3>
+                        <span class="param">No</span>
+                    </div>
+                                            <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Milestone</h3>
+                    <span class="param">
+                                                    -
+                                                </span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Automation</h3>
+                    <span class="param">
+                                                    Automated
+                                                </span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Status</h3>
+                    <span class="param">
+                                                    Actual
+                                                </span>
+                </div>
+                            <div class="clearfix" style="padding-bottom: 0.75rem;"></div>
+                            <div class="clearfix"></div>
+                <div class="row" style="padding-top: 1rem;">
+                                                        </div>
+                        <div class="clearfix"></div>
+            <div style="padding-top: 1rem;">
+                                            </div>
+            <div class="clearfix"></div>
+                        <div class="clearfix"></div>
+                            <div class="case-steps" style="padding-top: 1rem;">
+                                            <h3 style="font-size:1rem; ">Scenario</h3>
+                                                    <div class="case-steps-case mt-4">
+                                <div class="steps">
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">Given</span> User goes to sign up page
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">When</span> User clicks sign up with Facebook button
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">Then</span> Terms and subscription confirmation dialog pops up
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">When</span> User checks terms checkbox
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">And</span> User checks subscription checkbox
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">When</span> User clicks continue to sign up button
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">Then</span> User is redirected to Facebook account sign up page
+</div>
+                                                                    </div>
+                            </div>
+                                                            </div>
+                    </div>
+    </div>
+</div>
+                    <div class="page">
+    <div>
+        <span style="font-size: 0.75rem; font-weight: 400; color: #686868">
+            MTP-24
+                    </span>
+        <h1 style="margin-bottom: 0.25rem;"> Sign in button validation</h1>
+        <div class="description"></div>
+        <div class="row">
+                            <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Severity</h3>
+                    <span class="param"><i
+                                class="fas fa-genderless color-normal"></i> Normal</span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Priority</h3>
+                    <span class="param"><i
+                                class="fas fa-genderless color-medium"></i> Medium</span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Behavior</h3>
+                    <span class="param">Positive</span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Type</h3>
+                    <span class="param">Functional</span>
+                </div>
+                                                <div class="col-3">
+                        <h3 style="font-size: 0.875rem;">Layer</h3>
+                        <span class="param">E2E</span>
+                    </div>
+                                                    <div class="col-3">
+                        <h3 style="font-size: 0.875rem;">Is Flaky</h3>
+                        <span class="param">No</span>
+                    </div>
+                                            <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Milestone</h3>
+                    <span class="param">
+                                                    -
+                                                </span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Automation</h3>
+                    <span class="param">
+                                                    Automated
+                                                </span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Status</h3>
+                    <span class="param">
+                                                    Actual
+                                                </span>
+                </div>
+                            <div class="clearfix" style="padding-bottom: 0.75rem;"></div>
+                            <div class="clearfix"></div>
+                <div class="row" style="padding-top: 1rem;">
+                                                        </div>
+                        <div class="clearfix"></div>
+            <div style="padding-top: 1rem;">
+                                            </div>
+            <div class="clearfix"></div>
+                        <div class="clearfix"></div>
+                            <div class="case-steps" style="padding-top: 1rem;">
+                                            <h3 style="font-size:1rem; ">Scenario</h3>
+                                                    <div class="case-steps-case mt-4">
+                                <div class="steps">
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">Given</span> User goes to sign up page
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">When</span> User clicks sign in button
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">Then</span> User is redirected to sign in page
+</div>
+                                                                    </div>
+                            </div>
+                                                            </div>
+                    </div>
+    </div>
+</div>
+                    <div class="page">
+    <div>
+        <span style="font-size: 0.75rem; font-weight: 400; color: #686868">
+            MTP-25
+                    </span>
+        <h1 style="margin-bottom: 0.25rem;"> Localization validation</h1>
+        <div class="description"></div>
+        <div class="row">
+                            <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Severity</h3>
+                    <span class="param"><i
+                                class="fas fa-genderless color-normal"></i> Normal</span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Priority</h3>
+                    <span class="param"><i
+                                class="fas fa-genderless color-medium"></i> Medium</span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Behavior</h3>
+                    <span class="param">Positive</span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Type</h3>
+                    <span class="param">Functional</span>
+                </div>
+                                                <div class="col-3">
+                        <h3 style="font-size: 0.875rem;">Layer</h3>
+                        <span class="param">E2E</span>
+                    </div>
+                                                    <div class="col-3">
+                        <h3 style="font-size: 0.875rem;">Is Flaky</h3>
+                        <span class="param">No</span>
+                    </div>
+                                            <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Milestone</h3>
+                    <span class="param">
+                                                    -
+                                                </span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Automation</h3>
+                    <span class="param">
+                                                    Automated
+                                                </span>
+                </div>
+                                        <div class="col-3">
+                    <h3 style="font-size: 0.875rem;">Status</h3>
+                    <span class="param">
+                                                    Actual
+                                                </span>
+                </div>
+                            <div class="clearfix" style="padding-bottom: 0.75rem;"></div>
+                            <div class="clearfix"></div>
+                <div class="row" style="padding-top: 1rem;">
+                                                        </div>
+                        <div class="clearfix"></div>
+            <div style="padding-top: 1rem;">
+                                            </div>
+            <div class="clearfix"></div>
+                        <div class="clearfix"></div>
+                            <div class="case-steps" style="padding-top: 1rem;">
+                                            <h3 style="font-size:1rem; ">Scenario</h3>
+                                                    <div class="case-steps-case mt-4">
+                                <div class="steps">
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">Given</span> User goes to the sign up page
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">When</span> User selects language button
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">And</span> User enters language parameter option
+</div>
+                                                                            <div style="padding-right: 1rem; font-size: 0.875rem; word-break: break-all;">
+    <span style="color: #1990b8">Then</span> Sign up page changes locale to the selected option
+</div>
+                                                                    </div>
+                            </div>
+                                                            </div>
+                    </div>
+    </div>
+</div>
+            </body>
+</html>
