@@ -7,10 +7,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-
-import static org.miro.testproject.utils.common.HelperUtil.takeScreenshot;
 
 public class ElementImpl implements Element {
 
@@ -77,7 +73,6 @@ public class ElementImpl implements Element {
         try {
             waitUntilVisible();
         } catch (TimeoutException e) {
-            takeScreenshot(webDriver, "elementNotVisible");
             return false;
         }
         return webElement().isDisplayed();

@@ -21,7 +21,6 @@ public class SignUpTests extends BaseTest {
 
     /**
      * Reader for expected title in shouldChangeLocale
-     *
      * @return Expected header title in specified language
      */
     static String getExpectedTitle(Language language) {

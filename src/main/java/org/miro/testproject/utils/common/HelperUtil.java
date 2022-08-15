@@ -15,7 +15,6 @@ public class HelperUtil {
 
     /**
      * Helper method to find out if an object is null or empty
-     *
      * @param object target object
      * @return true if the object is null, empty or a NullPointerException is thrown
      */
@@ -27,10 +26,21 @@ public class HelperUtil {
         }
     }
 
+    /**
+     * Fetch the value of a property from the specified file
+     * @param property Key for the target property
+     * @param file Filename without the extension: .properties will be added to the file name
+     * @return String value for target property
+     */
     public static String retrievePropertyFromFile(String property, String file) {
         return new PropertiesReader(file).getProperty(property);
     }
 
+    /**
+     * Take a screenshot of current driver state
+     * @param webDriver Native webdriver in its current state
+     * @param fileName Screenshot will be saved in {root}/screenshots/
+     */
     public static void takeScreenshot(WebDriver webDriver, String fileName) {
         TakesScreenshot ts = (TakesScreenshot) webDriver;
         File source = ts.getScreenshotAs(OutputType.FILE);
