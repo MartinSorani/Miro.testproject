@@ -2,6 +2,7 @@ package org.miro.tests;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.DisabledIf;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -13,15 +14,24 @@ import org.miro.testproject.utils.users.User;
 
 import java.nio.charset.StandardCharsets;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class SignUpTests extends BaseTest {
+
+    /**
+     * Reader for expected title in shouldChangeLocale
+     *
+     * @return Expected header title in specified language
+     */
+    static String getExpectedTitle(Language language) {
+        return HelperUtil.retrievePropertyFromFile(language.code, "ExpectedTitle");
+    }
 
     @Test
     @DisplayName("Should land in the code verification page")
     void shouldReachCodeVerification() {
 
-        log.info("Should land in the code verification page");
         CodeVerificationPage codeVerificationPage =
                 test()
                         .clickSignUpButton()
@@ -31,6 +41,7 @@ public class SignUpTests extends BaseTest {
                         .checkTermsBox()
                         .clickSignupButton();
 
+        log.info("Asserting text code label is visible and user email is in the message");
         assertTrue(codeVerificationPage.txtCode.isVisible());
         assertTrue(codeVerificationPage.lblConfirmation.getText().contains(user.getEmail()));
     }
@@ -44,7 +55,6 @@ public class SignUpTests extends BaseTest {
                 .setRandomEmail("testemail.com")
                 .setRandomPassword();
 
-        log.info("Should not trigger name validation warning");
         SignUpPage signUpPage =
                 test()
                         .clickSignUpButton()
@@ -65,13 +75,13 @@ public class SignUpTests extends BaseTest {
                 .setRandomEmail(domain)
                 .setRandomPassword();
 
-        log.info("Should trigger an email validation error");
         SignUpPage signUpPage =
                 test()
                         .clickSignUpButton()
                         .enterUsername(user.getUsername())
                         .enterEmail(user.getEmail());
 
+        log.info("Asserting email warning message is displayed");
         assertTrue(signUpPage.lblEmailWarning.isVisible());
         assertEquals("Enter a valid email address.", signUpPage.lblEmailWarning.getText());
     }
@@ -85,7 +95,6 @@ public class SignUpTests extends BaseTest {
                 .setRandomEmail("testemail.com")
                 .setPassword(password);
 
-        log.info("Should trigger a password validation error");
         SignUpPage signUpPage =
                 test()
                         .clickSignUpButton()
@@ -102,7 +111,6 @@ public class SignUpTests extends BaseTest {
     @DisplayName("Should trigger a terms checkbox warning")
     void shouldTriggerTermsWarning() {
 
-        log.info("Should trigger a terms checkbox warning");
         SignUpPage signUpPage =
                 test()
                         .clickSignUpButton()
@@ -121,7 +129,6 @@ public class SignUpTests extends BaseTest {
     @DisplayName("Should bring up the terms of service page")
     void shouldRedirectToTermsPage() {
 
-        log.info("Should bring up the terms of service page");
         TermsPage termsPage =
                 test()
                         .clickSignUpButton()
@@ -135,7 +142,6 @@ public class SignUpTests extends BaseTest {
     @DisplayName("Should bring up the privacy policy page")
     void shouldRedirectToPrivacyPage() {
 
-        log.info("Should bring up the privacy policy page");
         PrivacyPage privacyPage =
                 test()
                         .clickSignUpButton()
@@ -149,7 +155,6 @@ public class SignUpTests extends BaseTest {
     @DisplayName("Should trigger terms review warning")
     void shouldTriggerTermsReviewWarning() {
 
-        log.info("Should trigger terms review warning");
         SignUpPage signUpPage =
                 test()
                         .clickSignUpButton()
@@ -163,10 +168,10 @@ public class SignUpTests extends BaseTest {
     }
 
     @Test
+    @DisabledIf(value = "disableCondition", disabledReason = "Google account redirects to service login on headless Chrome")
     @DisplayName("Should land in Google account page")
     void shouldLandInGoogleAccount() {
 
-        log.info("Should land in Google account page");
         GooglePage googlePage =
                 test()
                         .clickSignUpButton()
@@ -183,7 +188,6 @@ public class SignUpTests extends BaseTest {
     @DisplayName("Should land in Slack account page")
     void shouldLandInSlackAccount() {
 
-        log.info("Should land in Slack account page");
         SlackPage slackPage =
                 test()
                         .clickSignUpButton()
@@ -201,7 +205,6 @@ public class SignUpTests extends BaseTest {
     @DisplayName("Should land in Microsoft account page")
     void shouldLandInMicrosoftAccount() {
 
-        log.info("Should land in Microsoft account page");
         MicrosoftPage microsoftPage =
                 test()
                         .clickSignUpButton()
@@ -216,10 +219,10 @@ public class SignUpTests extends BaseTest {
     }
 
     @Test
+    @DisabledIf(value = "disableCondition", disabledReason = "Apple ID page not loading on headless Chrome")
     @DisplayName("Should land in Apple ID page")
     void shouldLandInAppleAccount() {
 
-        log.info("Should land in Apple ID page");
         ApplePage applePage =
                 test()
                         .clickSignUpButton()
@@ -237,7 +240,6 @@ public class SignUpTests extends BaseTest {
     @DisplayName("Should land in Facebook page")
     void shouldLandInFacebookAccount() {
 
-        log.info("Should land in Facebook page");
         FacebookPage facebookPage =
                 test()
                         .clickSignUpButton()
@@ -256,7 +258,6 @@ public class SignUpTests extends BaseTest {
     @DisplayName("Should redirect to sign in page")
     void shouldLandInSignInPage() {
 
-        log.info("Should redirect to sign in page");
         SignInPage signInPage =
                 test()
                         .clickSignUpButton()
@@ -269,10 +270,10 @@ public class SignUpTests extends BaseTest {
 
     @ParameterizedTest
     @EnumSource(Language.class)
-    @DisplayName("Should display the header in several languages")
+    @DisplayName("Should display header text in several languages")
     void shouldChangeLocale(Language language) {
 
-        log.info("Should display the header in " + language);
+        log.info("Should display header text in " + language);
         SignUpPage signUpPage =
                 test()
                         .clickSignUpButton()
@@ -281,14 +282,5 @@ public class SignUpTests extends BaseTest {
         log.info("Asserting header text matches expected language: " + language);
         assertEquals(new String(getExpectedTitle(language).getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8),
                 signUpPage.lblHeaderTitle.getText());
-    }
-
-    /**
-     * Reader for expected title in shouldChangeLocale
-     *
-     * @return Expected header title in specified language
-     */
-    static String getExpectedTitle(Language language) {
-        return HelperUtil.retrievePropertyFromFile(language.code, "ExpectedTitle");
     }
 }

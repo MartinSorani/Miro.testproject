@@ -198,6 +198,8 @@ public class SignUpPage extends BasePage {
                 .setBy("css"));
         log.info(language.label + " option found. Clicking option");
         targetOption.click();
+
+        //Firefox is faster and doesn't need this verification
         if (!driver.getBrowser().equals("Firefox")) {
             try {
                 log.info("Wait for language box to disappear");

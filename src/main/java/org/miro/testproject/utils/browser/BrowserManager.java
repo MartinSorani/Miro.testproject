@@ -14,12 +14,13 @@ import static org.miro.testproject.utils.common.HelperUtil.isNullOrEmpty;
 import static org.miro.testproject.utils.common.HelperUtil.retrievePropertyFromFile;
 
 public class BrowserManager {
-    private Driver driver;
     private final boolean isHeadless;
     String configFile = "test.config";
+    private Driver driver;
 
     public BrowserManager() {
         this.isHeadless = getHeadlessParam();
+        System.setProperty("headless", String.valueOf(isHeadless));
         createDriver(getBrowserParam());
     }
 
@@ -43,7 +44,6 @@ public class BrowserManager {
         if (isNullOrEmpty(headless))
             return Boolean.parseBoolean(retrievePropertyFromFile("headless", configFile));
         return Boolean.parseBoolean(headless);
-
     }
 
     private void createDriver(String browser) {
