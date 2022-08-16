@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.Method;
 
-import static org.miro.testproject.tests.base.BaseTest.snapshot;
+import static org.miro.testproject.tests.base.BaseTest.takeScreenshot;
 
 public class CustomListener implements BeforeTestExecutionCallback, AfterTestExecutionCallback {
 
@@ -20,7 +20,7 @@ public class CustomListener implements BeforeTestExecutionCallback, AfterTestExe
         boolean testFailed = extensionContext.getExecutionException().isPresent();
         if (testFailed) {
             log.info("Test case failure. Taking screenshot");
-            snapshot(testMethod.getName());
+            takeScreenshot(testMethod.getName());
         }
     }
 

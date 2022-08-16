@@ -106,7 +106,7 @@ public class SignUpTests extends BaseTest {
         assertEquals("Please use 8+ characters for secure password.", signUpPage.lblPasswordWarning.getText());
     }
 
-    @Test()
+    @Test
     @DisplayName("Should trigger a terms checkbox warning")
     void shouldTriggerTermsWarning() {
 
@@ -167,7 +167,7 @@ public class SignUpTests extends BaseTest {
     }
 
     @Test
-    @DisabledIf(value = "disableCondition", disabledReason = "Google account redirects to service login on headless Chrome")
+    @DisabledIf(value = "isHeadlessChrome", disabledReason = "Google account redirects to service login on headless Chrome")
     @DisplayName("Should land in Google account page")
     void shouldLandInGoogleAccount() {
 
@@ -218,7 +218,7 @@ public class SignUpTests extends BaseTest {
     }
 
     @Test
-    @DisabledIf(value = "disableCondition", disabledReason = "Apple ID page not loading on headless Chrome")
+    @DisabledIf(value = "isHeadlessChromeOrEdge", disabledReason = "Apple ID page returns 404 on a headless Chrome or Edge")
     @DisplayName("Should land in Apple ID page")
     void shouldLandInAppleAccount() {
 
@@ -250,7 +250,7 @@ public class SignUpTests extends BaseTest {
 
         log.info("Asserting Facebook header is present");
         assertTrue(facebookPage.lblFacebookHeader.isVisible());
-        assertEquals("Log Into Facebook", facebookPage.lblFacebookHeader.getText());
+        assertTrue(facebookPage.lblFacebookHeader.getText().contains("Facebook"));
     }
 
     @Test

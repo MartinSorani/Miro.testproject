@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class BasePage {
-    protected static final Logger log = LoggerFactory.getLogger("[ACTION]");
+    protected static final Logger log = LoggerFactory.getLogger("[STEP]");
     private final PropertiesReader reader;
     protected final WebDriverWait wait;
     protected final Driver driver;

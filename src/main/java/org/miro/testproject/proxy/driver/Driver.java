@@ -2,6 +2,7 @@ package org.miro.testproject.proxy.driver;
 
 import org.miro.testproject.proxy.element.Element;
 import org.miro.testproject.proxy.locators.Locator;
+import org.miro.testproject.utils.browser.Browser;
 import org.openqa.selenium.WebDriver;
 
 import java.util.Set;
@@ -25,5 +26,5 @@ public interface Driver {
 
     void waitUrlContains(String expected, long duration);
 
-    String getBrowser();
+    Browser getBrowser();
 }

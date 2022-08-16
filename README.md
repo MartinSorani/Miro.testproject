@@ -21,6 +21,7 @@
   * [Running tests](#running-tests)
 * [Configuration](#configuration)
 * [Output](#output)
+* [Reporting](#reporting)
 * [Test suite documentation](#test-suite-documentation)
 * [Contact](#contact)
 
@@ -133,10 +134,38 @@ After all tests have run, an output log file will be generated with the name `Mi
 
 If a test results in a failure, a screenshot of the browser's state will be saved in the `/screenshots/` folder with the time of the failure as the file name.
 
+## Reporting
+
+This framework generates surefire reports automatically. There is no need to set up any external tool in order to access the report.
+
+To generate a surefire report, run the tests using the command
+
+```sh
+mvn site
+```
+Once the test run is completed, you'll be able to access an .html version of the report in the file 
+
+`/target/site/surefire-report.html`
+
+<img src="images/surefire-report.sample.png" alt="surefire-report" width="400" height="200">
+
+However, this project also generates a nicer report version using the [Allure](https://github.com/allure-framework/allure2) framework.
+
+To access this version, you'll need to [download](https://github.com/allure-framework/allure2/releases) the latest Allure version and add the bin path `{installation.folder\Allure\bin}` to your system environment path.
+
+After that, you can generate the Allure report by running the command
+
+```sh
+allure serve allure-results
+```
+
+The generated report should look like this:
+
+<img src="images/allure-report.sample.png" alt="allure-report" width="400" height="200">
+
 ## Test suite documentation
 
 Access this test suite documentation in [Qase](https://app.qase.io/project/MTP?view=1&suite=4) or download the html version at [TestCases.html](./documents/TestCases.html)
-
 
 ## Contact
 
