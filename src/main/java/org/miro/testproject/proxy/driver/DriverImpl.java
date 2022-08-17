@@ -11,6 +11,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.Set;
 
+import static org.miro.testproject.utils.common.HelperUtil.killAllProcesses;
+
 public class DriverImpl implements Driver {
 
     private final WebDriver webDriver;
@@ -43,7 +45,9 @@ public class DriverImpl implements Driver {
 
     @Override
     public void quit() {
+        this.webDriver.manage().deleteAllCookies();
         this.webDriver.quit();
+        killAllProcesses(this.browser.getProcessName());
     }
 
     @Override

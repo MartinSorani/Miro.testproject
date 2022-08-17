@@ -39,19 +39,10 @@ public class BrowserManager {
 
     private Browser fetchBrowserSettings() {
         boolean isHeadless = getHeadlessParam();
-        String targetBrowser = System.getProperty("browser");
-        if (isNullOrEmpty(targetBrowser))
-            targetBrowser = retrievePropertyFromFile("browser", configFile);
-        switch (targetBrowser) {
-            case "Chrome":
-                return new Browser(BrowserName.Chrome, isHeadless);
-            case "Firefox":
-                return new Browser(BrowserName.Firefox, isHeadless);
-            case "Edge":
-                return new Browser(BrowserName.Edge, isHeadless);
-            default:
-                throw new IllegalStateException("Browser not selected! Add target browser in test.config.properties");
-        }
+        String browserProperty = System.getProperty("browser");
+        if (isNullOrEmpty(browserProperty))
+            browserProperty = retrievePropertyFromFile("browser", configFile);
+        return new Browser (BrowserName.valueOf(browserProperty), isHeadless);
     }
 
     private boolean getHeadlessParam() {

@@ -6,6 +6,8 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.io.FileHandler;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
@@ -14,6 +16,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class HelperUtil {
+
+    protected static final Logger log = LoggerFactory.getLogger("[PROCESS]");
 
     /**
      * Helper method to find out if an object is null or empty
@@ -35,7 +39,12 @@ public class HelperUtil {
      * @return String value for target property
      */
     public static String retrievePropertyFromFile(String property, String file) {
-        return new PropertiesReader(file).getProperty(property);
+        String result = new PropertiesReader(file).getProperty(property);
+        if (isNullOrEmpty(result)) {
+            log.debug("Could not fetch property " + property);
+            throw new NullPointerException(property + " not found in " + file + "!");
+        }
+        return result;
     }
 
     /**
@@ -49,6 +58,7 @@ public class HelperUtil {
         File source = ts.getScreenshotAs(OutputType.FILE);
         byte[] fileContent;
         try {
+            log.debug("Taking screenshot");
             fileContent = Files.readAllBytes(source.toPath());
             FileHandler.copy(source,
                     new File(
@@ -58,8 +68,27 @@ public class HelperUtil {
                                             DateTimeFormatter.ofPattern("MM-dd-yyyy_HH.mm.ss")) +
                                     ".png"));
         } catch (IOException i) {
+            log.debug("Error processing screenshot!");
             return null;
         }
         return fileContent;
+    }
+
+    /**
+     * Forcefully kill all driver processes if user is running Windows
+     * The implementation of this method is not necessary but a precaution when running on debug mode
+     * @param name of the target process to be terminated
+     */
+    public static void killAllProcesses(String name) {
+        if (!System.getProperty("os.name").startsWith("Windows")) {
+            log.debug("Method not implemented for this OS");
+            return;
+        }
+        try {
+            log.debug("Force terminating driver process");
+            Runtime.getRuntime().exec("taskkill /F /IM " + name + ".exe /T");
+        } catch (IOException e) {
+            log.debug("No process found by the name " + name);
+        }
     }
 }

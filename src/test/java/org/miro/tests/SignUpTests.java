@@ -34,7 +34,6 @@ public class SignUpTests extends BaseTest {
         CodeVerificationPage codeVerificationPage =
                 test()
                         .clickSignUpButton()
-                        .enterUsername(user.getUsername())
                         .enterEmail(user.getEmail())
                         .enterPassword(user.getPassword())
                         .checkTermsBox()
