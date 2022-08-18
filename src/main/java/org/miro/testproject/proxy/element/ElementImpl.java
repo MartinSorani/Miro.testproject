@@ -10,14 +10,14 @@ import java.time.Duration;
 
 public class ElementImpl implements Element {
 
-    private final WebDriver webDriver;
-    private final Locator locator;
+    private final Driver driver;
+    private Locator locator;
     private final WebDriverWait wait;
 
     public ElementImpl(Driver driver, Locator locator) {
         this.locator = locator;
-        this.webDriver = driver.getWebDriver();
-        wait = new WebDriverWait(webDriver, Duration.ofSeconds(3L));
+        this.driver = driver;
+        wait = new WebDriverWait(driver.getWebDriver(), Duration.ofSeconds(3L));
     }
 
     private WebElement webElement() {
@@ -79,7 +79,7 @@ public class ElementImpl implements Element {
     }
 
     private void removeCookieBanner() {
-        JavascriptExecutor js = (JavascriptExecutor) webDriver;
+        JavascriptExecutor js = (JavascriptExecutor) driver.getWebDriver();
         js.executeScript("return document.querySelectorAll('#onetrust-consent-sdk').forEach(function(element) {element.remove();});");
     }
 
@@ -90,7 +90,13 @@ public class ElementImpl implements Element {
 
     @Override
     public void setAttribute(String attribute, String value) {
-        JavascriptExecutor js = (JavascriptExecutor) webDriver;
+        JavascriptExecutor js = (JavascriptExecutor) driver.getWebDriver();
         js.executeScript("arguments[0].setAttribute(arguments[1], arguments[2])", webElement(), attribute, value);
+    }
+
+    @Override
+    public Element setLocator(Locator locator) {
+        this.locator = locator;
+        return this;
     }
 }

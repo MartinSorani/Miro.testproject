@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 public interface Element {
     Locator getLocator();
 
+    Element setLocator(Locator locator);
+
     void click();
 
     WebElement toWebElement();

@@ -246,6 +246,12 @@ public class SignUpPage extends BasePage {
                 log.info("Page not properly loaded. Trying one more time");
                 targetOption.click();
             }
+        } else {
+            if (isSimplifiedOverlay()) {
+                lblHeaderTitle.setLocator(new Locator()
+                        .setSelector(".ssp-step-0 h1")
+                        .setBy("css"));
+            }
         }
 
         log.info("Wait for the Google button to become visible");
