@@ -29,6 +29,4 @@ public interface Driver {
     void waitUrlContains(String expected, long duration);
 
     Browser getBrowser();
-
-    WebDriverWait waitFor();
 }

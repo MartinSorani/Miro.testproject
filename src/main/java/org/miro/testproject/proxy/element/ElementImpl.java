@@ -54,7 +54,7 @@ public class ElementImpl implements Element {
 
     @Override
     public void click() {
-        //waitToBeClickable();
+        waitToBeClickable();
         try {
             webElement().click();
         } catch (ElementClickInterceptedException e) {

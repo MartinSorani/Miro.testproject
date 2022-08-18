@@ -77,9 +77,4 @@ public class DriverImpl implements Driver {
         WebDriverWait wait = new WebDriverWait(this.webDriver, Duration.ofSeconds(duration));
         wait.until(ExpectedConditions.urlContains(expected));
     }
-
-    @Override
-    public WebDriverWait waitFor() {
-        return this.wait;
-    }
 }

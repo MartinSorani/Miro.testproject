@@ -63,9 +63,9 @@ public class HelperUtil {
             FileHandler.copy(source,
                     new File(
                             "./screenshots/" +
-                                    fileName + "_" +
                                     LocalDateTime.now().format(
-                                            DateTimeFormatter.ofPattern("MM-dd-yyyy_HH.mm.ss")) +
+                                            DateTimeFormatter.ofPattern("HH.mm.ss_MM-dd-yyyy")) +
+                                    fileName + "_" +
                                     ".png"));
         } catch (IOException i) {
             log.debug("Error processing screenshot!");

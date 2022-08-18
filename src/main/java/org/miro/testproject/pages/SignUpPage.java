@@ -240,10 +240,11 @@ public class SignUpPage extends BasePage {
 
         if (!language.equals(ENGLISH)) {
             log.info("Wait for url to contain " + language.code);
-            driver.waitUrlContains(language.code, 2L);
+            driver.waitUrlContains(language.code, 3L);
         }
-        log.info("Wait for the submit button to be visible");
-        btnSubmit.waitUntilVisible();
+
+        log.info("Wait for the Google button to be visible");
+        btnGoogleSignup.waitUntilVisible();
         return this;
     }
 

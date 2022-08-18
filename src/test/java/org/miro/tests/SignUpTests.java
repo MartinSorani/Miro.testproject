@@ -21,6 +21,7 @@ public class SignUpTests extends BaseTest {
 
     /**
      * Reader for expected title in shouldChangeLocale
+     *
      * @return Expected header title in specified language
      */
     static String getExpectedTitle(Language language) {
@@ -32,28 +33,28 @@ public class SignUpTests extends BaseTest {
     void shouldReachCodeVerification() {
 
         CodeVerificationPage codeVerificationPage;
-        SignUpPage signUpPage  =
+        SignUpPage signUpPage =
                 test()
                         .clickSignUpButton();
         if (signUpPage.isSimplifiedOverlay()) {
             codeVerificationPage =
-            signUpPage
-                    .enterEmail(user.getEmail())
-                    .clickContinue(0)
-                    .enterUsername(user.getUsername())
-                    .clickContinue(1)
-                    .enterPassword(user.getPassword())
-                    .checkTermsBox()
-                    .clickContinue(2)
-                    .loadPage(CodeVerificationPage.class);
+                    signUpPage
+                            .enterEmail(user.getEmail())
+                            .clickContinue(0)
+                            .enterUsername(user.getUsername())
+                            .clickContinue(1)
+                            .enterPassword(user.getPassword())
+                            .checkTermsBox()
+                            .clickContinue(2)
+                            .loadPage(CodeVerificationPage.class);
         } else {
             codeVerificationPage =
-            signUpPage
-                    .enterUsername(user.getUsername())
-                    .enterEmail(user.getEmail())
-                    .enterPassword(user.getPassword())
-                    .checkTermsBox()
-                    .clickSignupButton();
+                    signUpPage
+                            .enterUsername(user.getUsername())
+                            .enterEmail(user.getEmail())
+                            .enterPassword(user.getPassword())
+                            .checkTermsBox()
+                            .clickSignupButton();
         }
 
         log.info("Asserting text code label is visible and user email is in the message");
@@ -72,10 +73,19 @@ public class SignUpTests extends BaseTest {
 
         SignUpPage signUpPage =
                 test()
-                        .clickSignUpButton()
-                        .enterUsername(user.getUsername())
-                        .enterEmail(user.getEmail())
-                        .enterPassword(user.getPassword());
+                        .clickSignUpButton();
+        if (signUpPage.isSimplifiedOverlay()) {
+            signUpPage
+                    .enterEmail(user.getEmail())
+                    .clickContinue(0)
+                    .enterUsername(user.getUsername())
+                    .clickContinue(1);
+        } else {
+            signUpPage
+                    .enterUsername(user.getUsername())
+                    .enterEmail(user.getEmail())
+                    .enterPassword(user.getPassword());
+        }
 
         log.info("Asserting name warning is not displayed");
         assertEquals("", signUpPage.lblNameWarning.getText());
@@ -93,7 +103,6 @@ public class SignUpTests extends BaseTest {
         SignUpPage signUpPage =
                 test()
                         .clickSignUpButton()
-                        .enterUsername(user.getUsername())
                         .enterEmail(user.getEmail());
 
         log.info("Asserting email warning message is displayed");
@@ -112,10 +121,20 @@ public class SignUpTests extends BaseTest {
 
         SignUpPage signUpPage =
                 test()
-                        .clickSignUpButton()
-                        .enterUsername(user.getUsername())
-                        .enterEmail(user.getEmail())
-                        .enterPassword(user.getPassword());
+                        .clickSignUpButton();
+        if (signUpPage.isSimplifiedOverlay()) {
+            signUpPage
+                    .enterEmail(user.getEmail())
+                    .clickContinue(0)
+                    .enterUsername(user.getUsername())
+                    .clickContinue(1)
+                    .enterPassword(user.getPassword());
+        } else {
+            signUpPage
+                    .enterUsername(user.getUsername())
+                    .enterEmail(user.getEmail())
+                    .enterPassword(user.getPassword());
+        }
 
         log.info("Asserting password warning message is displayed");
         assertTrue(signUpPage.lblPasswordWarning.isVisible());
@@ -156,10 +175,23 @@ public class SignUpTests extends BaseTest {
     @DisplayName("Should bring up the terms of service page")
     void shouldRedirectToTermsPage() {
 
-        TermsPage termsPage =
+        TermsPage termsPage;
+        SignUpPage signUpPage =
                 test()
-                        .clickSignUpButton()
-                        .clickTermsLink();
+                        .clickSignUpButton();
+        if (signUpPage.isSimplifiedOverlay()) {
+            termsPage =
+                    signUpPage
+                            .enterEmail(user.getEmail())
+                            .clickContinue(0)
+                            .enterUsername(user.getUsername())
+                            .clickContinue(1)
+                            .clickTermsLink();
+        } else {
+            termsPage =
+                    signUpPage
+                            .clickTermsLink();
+        }
 
         log.info("Asserting user is in Terms or service page");
         assertEquals("Terms of Service", termsPage.lblTitle.getText());
@@ -169,10 +201,23 @@ public class SignUpTests extends BaseTest {
     @DisplayName("Should bring up the privacy policy page")
     void shouldRedirectToPrivacyPage() {
 
-        PrivacyPage privacyPage =
+        PrivacyPage privacyPage;
+        SignUpPage signUpPage =
                 test()
-                        .clickSignUpButton()
-                        .clickPrivacyLink();
+                        .clickSignUpButton();
+        if (signUpPage.isSimplifiedOverlay()) {
+            privacyPage =
+                    signUpPage
+                            .enterEmail(user.getEmail())
+                            .clickContinue(0)
+                            .enterUsername(user.getUsername())
+                            .clickContinue(1)
+                            .clickPrivacyLink();
+        } else {
+            privacyPage =
+                    signUpPage
+                            .clickPrivacyLink();
+        }
 
         log.info("Asserting user is in Privacy Policy page");
         assertEquals("Privacy Policy", privacyPage.lblTitle.getText());

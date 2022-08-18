@@ -34,7 +34,7 @@ public class BasePage {
     @Step
     private void assertUrlIsCorrect() {
         String expectedUrl = reader.getLocator("url").getSelector();
-        driver.waitFor().until(ExpectedConditions.urlContains(expectedUrl));
+        driver.waitUrlContains(expectedUrl, 3L);
         assertTrue(driver.getCurrentUrl().contains(reader.getLocator("url").getSelector()));
     }
 
