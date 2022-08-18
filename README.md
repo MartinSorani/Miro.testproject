@@ -146,7 +146,7 @@ This framework generates surefire reports automatically. There is no need to set
 To generate a surefire report, run the tests using the command
 
 ```sh
-mvn site
+mvn clean site
 ```
 Once the test run is completed, you'll be able to access an .html version of the report in the file 
 
@@ -164,9 +164,11 @@ After that, you can generate the Allure report by running the command
 allure serve allure-results
 ```
 
-The generated report should look like this:
+Allure generates a nicer version of the surefire .html report with a friendlier UI
 
 <img src="images/allure-report.sample.png" alt="allure-report" width="400" height="200">
+
+<img src="images/allure-report.sample_graphs.png" alt="allure-report" width="400" height="200">
 
 ## Test suite documentation
 
