@@ -17,12 +17,10 @@ public class DriverImpl implements Driver {
 
     private final WebDriver webDriver;
     private final Browser browser;
-    private final WebDriverWait wait;
 
     public DriverImpl(WebDriver driver, Browser browser) {
         this.browser = browser;
         this.webDriver = driver;
-        wait = new WebDriverWait(this.webDriver, Duration.ofSeconds(5L));
     }
 
     @Override
