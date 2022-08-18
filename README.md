@@ -76,6 +76,11 @@ Default locale: en_US, platform encoding: Cp1252
 OS name: "windows 10", version: "10.0", arch: "amd64", family: "windows"
 ~~~
 
+You'll also need to have at least one of the following web browsers installed:
+* [Mozilla Firefox](https://www.mozilla.org/en-US/firefox/new/)
+* [Microsoft Edge](https://www.microsoft.com/en-us/edge)
+* [Google Chrome](https://www.google.com/chrome/)
+
 ## Running tests
 
 To get a local copy up and running follow these steps:
