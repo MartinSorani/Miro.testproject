@@ -240,10 +240,15 @@ public class SignUpPage extends BasePage {
 
         if (!language.equals(ENGLISH)) {
             log.info("Wait for url to contain " + language.code);
-            driver.waitUrlContains(language.code, 3L);
+            try {
+                driver.waitUrlContains(language.code, 3L);
+            } catch (TimeoutException e) {
+                log.info("Page not properly loaded. Trying one more time");
+                targetOption.click();
+            }
         }
 
-        log.info("Wait for the Google button to be visible");
+        log.info("Wait for the Google button to become visible");
         btnGoogleSignup.waitUntilVisible();
         return this;
     }
@@ -269,12 +274,5 @@ public class SignUpPage extends BasePage {
     public boolean isSimplifiedOverlay() {
         log.debug("Verifying if overlay is correct");
         return divOverlayWrapper.getAttribute("class").contains("simplified-signup-page");
-    }
-
-    public SignUpPage restoreOverlay() {
-        log.debug("Restoring overlay");
-        divOverlayWrapper.setAttribute("class", "overlay-wrapper");
-        txtUsername.waitUntilVisible();
-        return this;
     }
 }
