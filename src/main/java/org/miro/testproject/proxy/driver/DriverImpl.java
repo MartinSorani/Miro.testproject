@@ -17,10 +17,12 @@ public class DriverImpl implements Driver {
 
     private final WebDriver webDriver;
     private final Browser browser;
+    private final WebDriverWait wait;
 
     public DriverImpl(WebDriver driver, Browser browser) {
         this.browser = browser;
         this.webDriver = driver;
+        wait = new WebDriverWait(this.webDriver, Duration.ofSeconds(5L));
     }
 
     @Override
@@ -74,5 +76,10 @@ public class DriverImpl implements Driver {
     public void waitUrlContains(String expected, long duration) {
         WebDriverWait wait = new WebDriverWait(this.webDriver, Duration.ofSeconds(duration));
         wait.until(ExpectedConditions.urlContains(expected));
+    }
+
+    @Override
+    public WebDriverWait waitFor() {
+        return this.wait;
     }
 }

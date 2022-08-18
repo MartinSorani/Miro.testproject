@@ -8,7 +8,6 @@ import org.miro.testproject.pages.MainPage;
 import org.miro.testproject.proxy.driver.Driver;
 import org.miro.testproject.tests.listener.CustomListener;
 import org.miro.testproject.utils.browser.BrowserManager;
-import org.miro.testproject.utils.browser.BrowserName;
 import org.miro.testproject.utils.properties.PropertiesReader;
 import org.miro.testproject.utils.users.User;
 import org.slf4j.Logger;

@@ -17,10 +17,12 @@ public class SignUpPage extends BasePage {
     Element txtUsername = getElement("txtUsername");
     Element txtEmail = getElement("txtEmail");
     Element txtPassword = getElement("txtPassword");
+
     Element chkSignupTerms = getElement("chkSignupTerms");
     Element chkSignupSubscribe = getElement("chkSignupSubscribe");
     Element chkReviewTerms = getElement("chkReviewTerms");
     Element chkReviewSubscribe = getElement("chkReviewSubscribe");
+
     Element btnSubmit = getElement("btnSubmit");
     Element btnContinueSignup = getElement("btnContinueSignup");
     Element btnSelectLanguage = getElement("btnSelectLanguage");
@@ -30,10 +32,13 @@ public class SignUpPage extends BasePage {
     Element btnAppleSignup = getElement("btnAppleSignup");
     Element btnFacebookSignup = getElement("btnFacebookSignup");
     Element btnSignIn = getElement("btnSignIn");
+
     Element lnkTerms = getElement("lnkTerms");
     Element lnkPrivacy = getElement("lnkPrivacy");
+
     Element divReviewTerms = getElement("divReviewTerms");
     Element divLanguageBox = getElement("divLanguageBox");
+    Element divOverlayWrapper = getElement("divOverlayWrapper");
     //endregion
 
     //region Validation
@@ -78,7 +83,7 @@ public class SignUpPage extends BasePage {
     }
 
     @Step
-    public SignUpPage checkNewsBox() {
+    public SignUpPage checkSubscribeBox() {
         log.info("Check subscribe to news checkbox");
         chkSignupSubscribe.click();
         return this;
@@ -247,5 +252,28 @@ public class SignUpPage extends BasePage {
         log.info("Click Sign in button");
         btnSignIn.click();
         return new SignInPage(driver);
+    }
+
+    @Step
+    public SignUpPage clickContinue(int step) {
+        log.info("Click Continue button");
+        Locator btnContinueSelector =
+                new Locator()
+                        .setSelector(String.format(".ssp-step.ssp-step-%s button.signup__submit.ssp-show", step))
+                        .setBy("css");
+        driver.createElement(btnContinueSelector).click();
+        return this;
+    }
+
+    public boolean isSimplifiedOverlay() {
+        log.debug("Verifying if overlay is correct");
+        return divOverlayWrapper.getAttribute("class").contains("simplified-signup-page");
+    }
+
+    public SignUpPage restoreOverlay() {
+        log.debug("Restoring overlay");
+        divOverlayWrapper.setAttribute("class", "overlay-wrapper");
+        txtUsername.waitUntilVisible();
+        return this;
     }
 }

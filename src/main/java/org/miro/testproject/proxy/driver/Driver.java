@@ -4,7 +4,9 @@ import org.miro.testproject.proxy.element.Element;
 import org.miro.testproject.proxy.locators.Locator;
 import org.miro.testproject.utils.browser.Browser;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.List;
 import java.util.Set;
 
 public interface Driver {
@@ -27,4 +29,6 @@ public interface Driver {
     void waitUrlContains(String expected, long duration);
 
     Browser getBrowser();
+
+    WebDriverWait waitFor();
 }

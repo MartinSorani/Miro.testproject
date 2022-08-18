@@ -21,4 +21,6 @@ public interface Element {
     void waitUntilInvisible();
 
     String getAttribute(String attribute);
+
+    void setAttribute(String attribute, String value);
 }

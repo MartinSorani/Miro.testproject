@@ -54,7 +54,7 @@ public class ElementImpl implements Element {
 
     @Override
     public void click() {
-        waitToBeClickable();
+        //waitToBeClickable();
         try {
             webElement().click();
         } catch (ElementClickInterceptedException e) {
@@ -86,5 +86,11 @@ public class ElementImpl implements Element {
     @Override
     public String getAttribute(String attribute) {
         return webElement().getAttribute(attribute);
+    }
+
+    @Override
+    public void setAttribute(String attribute, String value) {
+        JavascriptExecutor js = (JavascriptExecutor) webDriver;
+        js.executeScript("arguments[0].setAttribute(arguments[1], arguments[2])", webElement(), attribute, value);
     }
 }

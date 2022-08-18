@@ -63,7 +63,7 @@ public class HelperUtil {
             FileHandler.copy(source,
                     new File(
                             "./screenshots/" +
-                                    fileName +
+                                    fileName + "_" +
                                     LocalDateTime.now().format(
                                             DateTimeFormatter.ofPattern("MM-dd-yyyy_HH.mm.ss")) +
                                     ".png"));

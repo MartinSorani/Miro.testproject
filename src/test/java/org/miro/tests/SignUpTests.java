@@ -31,13 +31,30 @@ public class SignUpTests extends BaseTest {
     @DisplayName("Should land in the code verification page")
     void shouldReachCodeVerification() {
 
-        CodeVerificationPage codeVerificationPage =
+        CodeVerificationPage codeVerificationPage;
+        SignUpPage signUpPage  =
                 test()
-                        .clickSignUpButton()
-                        .enterEmail(user.getEmail())
-                        .enterPassword(user.getPassword())
-                        .checkTermsBox()
-                        .clickSignupButton();
+                        .clickSignUpButton();
+        if (signUpPage.isSimplifiedOverlay()) {
+            codeVerificationPage =
+            signUpPage
+                    .enterEmail(user.getEmail())
+                    .clickContinue(0)
+                    .enterUsername(user.getUsername())
+                    .clickContinue(1)
+                    .enterPassword(user.getPassword())
+                    .checkTermsBox()
+                    .clickContinue(2)
+                    .loadPage(CodeVerificationPage.class);
+        } else {
+            codeVerificationPage =
+            signUpPage
+                    .enterUsername(user.getUsername())
+                    .enterEmail(user.getEmail())
+                    .enterPassword(user.getPassword())
+                    .checkTermsBox()
+                    .clickSignupButton();
+        }
 
         log.info("Asserting text code label is visible and user email is in the message");
         assertTrue(codeVerificationPage.txtCode.isVisible());
@@ -111,12 +128,24 @@ public class SignUpTests extends BaseTest {
 
         SignUpPage signUpPage =
                 test()
-                        .clickSignUpButton()
-                        .enterUsername(user.getUsername())
-                        .enterEmail(user.getEmail())
-                        .enterPassword(user.getPassword())
-                        .checkNewsBox()
-                        .clickSignupButtonExpectError();
+                        .clickSignUpButton();
+        if (signUpPage.isSimplifiedOverlay()) {
+            signUpPage
+                    .enterEmail(user.getEmail())
+                    .clickContinue(0)
+                    .enterUsername(user.getUsername())
+                    .clickContinue(1)
+                    .enterPassword(user.getPassword())
+                    .checkSubscribeBox()
+                    .clickContinue(2);
+        } else {
+            signUpPage
+                    .enterUsername(user.getUsername())
+                    .enterEmail(user.getEmail())
+                    .enterPassword(user.getPassword())
+                    .checkSubscribeBox()
+                    .clickSignupButtonExpectError();
+        }
 
         log.info("Asserting terms warning is displayed");
         assertTrue(signUpPage.lblTermsWarning.isVisible());

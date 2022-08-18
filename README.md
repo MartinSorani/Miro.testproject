@@ -151,7 +151,7 @@ Once the test run is completed, you'll be able to access an .html version of the
 
 However, this project also generates a nicer report version using the [Allure](https://github.com/allure-framework/allure2) framework.
 
-To access this version, you'll need to [download](https://github.com/allure-framework/allure2/releases) the latest Allure version and add the bin path `{installation.folder\Allure\bin}` to your system environment path.
+To access this version, you'll need to [download](https://github.com/allure-framework/allure2/releases) the latest Allure version and add the bin path `{installation.folder}\Allure\bin` to your system environment path.
 
 After that, you can generate the Allure report by running the command
 
