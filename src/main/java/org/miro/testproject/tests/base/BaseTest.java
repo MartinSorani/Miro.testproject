@@ -49,6 +49,9 @@ public class BaseTest {
 
     protected MainPage test() {
         driver.goToUrl(BASE_URL);
+        if (!driver.getUserLocale().getValue().equals("en")) {
+            driver.setUserLocale("en");
+        }
         return new MainPage(driver);
     }
 

@@ -4,6 +4,7 @@ import org.miro.testproject.proxy.element.Element;
 import org.miro.testproject.proxy.element.ElementImpl;
 import org.miro.testproject.proxy.locators.Locator;
 import org.miro.testproject.utils.browser.Browser;
+import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -74,5 +75,17 @@ public class DriverImpl implements Driver {
     public void waitUrlContains(String expected, long duration) {
         WebDriverWait wait = new WebDriverWait(this.webDriver, Duration.ofSeconds(duration));
         wait.until(ExpectedConditions.urlContains(expected));
+    }
+
+    @Override
+    public void setUserLocale(String locale) {
+        this.webDriver.manage().deleteCookie(getUserLocale());
+        Cookie userLocale = new Cookie("userLocale", locale, "miro.com", "/", null);
+        this.webDriver.manage().addCookie(userLocale);
+    }
+
+    @Override
+    public Cookie getUserLocale() {
+        return this.webDriver.manage().getCookieNamed("userLocale");
     }
 }
