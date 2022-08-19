@@ -15,6 +15,7 @@ import org.slf4j.LoggerFactory;
 
 import static io.qameta.allure.Allure.step;
 import static org.miro.testproject.utils.browser.BrowserName.*;
+import static org.miro.testproject.utils.common.HelperUtil.isNullOrEmpty;
 import static org.miro.testproject.utils.common.HelperUtil.snapshot;
 
 @ExtendWith(CustomListener.class)
@@ -49,7 +50,7 @@ public class BaseTest {
 
     protected MainPage test() {
         driver.goToUrl(BASE_URL);
-        if (!driver.getUserLocale().getValue().equals("en")) {
+        if (!isNullOrEmpty(driver.getUserLocale()) && !driver.getUserLocale().getValue().equals("en")) {
             driver.setUserLocale("en");
         }
         return new MainPage(driver);
