@@ -228,7 +228,7 @@ public class SignUpPage extends BasePage {
         targetOption.click();
 
         //Firefox is faster and doesn't need this verification
-        if (driver.getBrowser().browserName.equals(Firefox)) {
+        if (!driver.getBrowser().browserName.equals(Firefox)) {
             try {
                 log.info("Wait for language box to disappear");
                 divLanguageBox.waitUntilInvisible();
